@@ -4,9 +4,7 @@ using UnityEngine;
 
 //Dis be prototype and evil!
 
-namespace Assets.Scripts.Simulation
-{
-    internal class Simulation
+    class Simulation
     {
         public event Action ClockEdge;
 
@@ -41,7 +39,6 @@ namespace Assets.Scripts.Simulation
             ClockEdge.Invoke();
         }
     }
-}
 
 //For Later
 //

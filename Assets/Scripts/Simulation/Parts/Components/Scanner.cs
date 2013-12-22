@@ -1,8 +1,5 @@
 ﻿using System;
-using Assets.Scripts.Simulation.GameState;
 
-namespace Assets.Scripts.Simulation.Parts.Components
-{
     internal class Scanner : Component
     {
         private readonly Wire rangeOutput, bearingOutput;
@@ -22,4 +19,3 @@ namespace Assets.Scripts.Simulation.Parts.Components
             bearingOutput.SignalValue = (float)random.NextDouble() * 360.0f;
         }
     }
-}

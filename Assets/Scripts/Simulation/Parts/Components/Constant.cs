@@ -1,6 +1,4 @@
 ﻿
-namespace Assets.Scripts.Simulation.Parts.Components
-{
     class Constant : Component
     {
         private readonly float constantValue;
@@ -17,4 +15,3 @@ namespace Assets.Scripts.Simulation.Parts.Components
             constantValueOuput.SignalValue = constantValue;
         }
     }
-}

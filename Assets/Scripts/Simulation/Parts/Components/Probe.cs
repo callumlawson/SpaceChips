@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.Simulation.Parts.Components
-{
     internal class Probe : Component
     {
         private readonly Wire instrumentedWire;
@@ -18,4 +16,3 @@ namespace Assets.Scripts.Simulation.Parts.Components
             Debug.Log(probeName + " probe value: " + instrumentedWire.SignalValue);
         }
     }
-}

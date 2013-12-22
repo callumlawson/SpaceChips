@@ -1,28 +1,22 @@
-﻿using System.Diagnostics;
-using Assets.Scripts.Simulation.GameState;
-using UnityEngine;
-using Debug = UnityEngine.Debug;
+﻿using Debug = UnityEngine.Debug;
 
-namespace Assets.Scripts.Simulation.Parts.Components
-{
     class Engine : Component
     {
-        private Ship ship;
+        private ShipModel shipModel;
         private Wire deltaXInput;
         private Wire deltaYInput;
 
-        public Engine(Simulation simulation, Ship ship, Wire deltaXInput, Wire deltaYInput) : base(simulation)
+        public Engine(Simulation simulation, ShipModel shipModel, Wire deltaXInput, Wire deltaYInput) : base(simulation)
         {
             this.deltaYInput = deltaYInput;
             this.deltaXInput = deltaXInput;
-            this.ship = ship;
+            this.shipModel = shipModel;
         }
 
         public override void OnClockEdge()
         {
             Debug.Log("position updated");
-            ship.PositionX += deltaXInput.SignalValue;
-            ship.PositionY += deltaYInput.SignalValue;
+            shipModel.PositionX += deltaXInput.SignalValue;
+            shipModel.PositionY += deltaYInput.SignalValue;
         }
     }
-}

@@ -1,10 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Security.Permissions;
 
-namespace Assets.Scripts.Simulation.GameState
-{
-    internal class World
+    class World
     {
-        public List<Ship> Ships = new List<Ship>();
+        public List<ShipModel> Ships = new List<ShipModel>();
     }
-}

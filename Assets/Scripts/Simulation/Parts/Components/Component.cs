@@ -1,6 +1,4 @@
-﻿namespace Assets.Scripts.Simulation.Parts.Components
-{
-    abstract class Component
+﻿    abstract class Component
     {
         protected Component(Simulation simulation)
         {
@@ -9,4 +7,3 @@
 
         public abstract void OnClockEdge();
     }
-}
