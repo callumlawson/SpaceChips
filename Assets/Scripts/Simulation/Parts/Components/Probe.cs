@@ -1,18 +1,18 @@
 ﻿using UnityEngine;
 
-    internal class Probe : Component
+internal class Probe : Component
+{
+    private readonly Wire instrumentedWire;
+    private readonly string probeName;
+
+    public Probe(Simulation simulation, string probeName, Wire instrumentedWire) : base(simulation)
     {
-        private readonly Wire instrumentedWire;
-        private readonly string probeName;
-
-        public Probe(Simulation simulation, string probeName, Wire instrumentedWire): base(simulation)
-        {
-            this.instrumentedWire = instrumentedWire;
-            this.probeName = probeName;
-        }
-
-        public override void OnClockEdge()
-        {
-            Debug.Log(probeName + " probe value: " + instrumentedWire.SignalValue);
-        }
+        this.instrumentedWire = instrumentedWire;
+        this.probeName = probeName;
     }
+
+    public override void OnClockEdge()
+    {
+        Debug.Log(probeName + " probe value: " + instrumentedWire.SignalValue);
+    }
+}

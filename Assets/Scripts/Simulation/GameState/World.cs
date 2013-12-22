@@ -1,6 +1,11 @@
 ﻿using System.Collections.Generic;
 
-    class World
+internal class World
+{
+    private readonly List<Ship> ships = new List<Ship>();
+
+    public void AddShip(Ship ship)
     {
-        public List<ShipModel> Ships = new List<ShipModel>();
+        ships.Add(ship);
     }
+}

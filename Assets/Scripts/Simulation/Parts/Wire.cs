@@ -1,5 +1,5 @@
-﻿    internal class Wire
-    {
-        public float SignalValue { get; set; }
-        private float signalValue;
-    }
+﻿internal class Wire
+{
+    private float signalValue;
+    public float SignalValue { get; set; }
+}

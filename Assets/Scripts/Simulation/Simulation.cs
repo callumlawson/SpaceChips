@@ -4,43 +4,43 @@ using UnityEngine;
 
 //Dis be prototype and evil!
 
-    class Simulation
+internal class Simulation
+{
+    private const int IntervalInMillis = 20;
+    private readonly Timer timer = new Timer();
+
+    public Simulation()
     {
-        public event Action ClockEdge;
-
-        private readonly Timer timer = new Timer();
-        private const int IntervalInMillis = 20;
-
-        public Simulation()
-        {
-            SetupClock();
-        }
-
-        public void Start()
-        {
-            timer.Enabled = true;
-            Debug.Log("Simulation Started");
-        }
-
-        public void Stop()
-        {
-            timer.Enabled = false;
-            Debug.Log("Simulation Stopped");
-        }
-
-        private void SetupClock()
-        {
-            timer.Interval = IntervalInMillis;
-            timer.Elapsed += OnClockEdge;
-        }
-
-        private void OnClockEdge(object source, ElapsedEventArgs e)
-        {
-            ClockEdge.Invoke();
-        }
+        SetupClock();
     }
 
-//For Later
+    public event Action ClockEdge;
+
+    public void Start()
+    {
+        timer.Enabled = true;
+        Debug.Log("Simulation Started");
+    }
+
+    public void Stop()
+    {
+        timer.Enabled = false;
+        Debug.Log("Simulation Stopped");
+    }
+
+    private void SetupClock()
+    {
+        timer.Interval = IntervalInMillis;
+        timer.Elapsed += OnClockEdge;
+    }
+
+    private void OnClockEdge(object source, ElapsedEventArgs e)
+    {
+        ClockEdge.Invoke();
+    }
+}
+
+//For Later fun times
 //
 //internal struct WorkItem : IComparable<WorkItem>
 //{

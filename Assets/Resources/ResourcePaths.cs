@@ -1,4 +1,4 @@
-﻿static class ResourcePaths
+﻿internal static class ResourcePaths
 {
-    public static string ShipResourcePath = "Prefabs/Ships/ShipModel";
+    public static string ShipResourcePath = "Prefabs/Ships/Ship";
 }
