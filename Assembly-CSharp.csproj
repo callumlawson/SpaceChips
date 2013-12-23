@@ -47,19 +47,24 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Resources\ResourcePaths.cs" />
+     <Compile Include="Assets\Resources\ShipChips.cs" />
      <Compile Include="Assets\Scripts\GameRunner.cs" />
      <Compile Include="Assets\Scripts\Simulation\GameState\Ship.cs" />
-     <Compile Include="Assets\Scripts\Simulation\GameState\ShipModel.cs" />
      <Compile Include="Assets\Scripts\Simulation\GameState\World.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Analogue\AnalogueConstant.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Analogue\AnalogueProbe.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Analogue\OmniThruster.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Analogue\Scanner.cs" />
      <Compile Include="Assets\Scripts\Simulation\Parts\Components\Component.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Constant.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Engine.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Probe.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Scanner.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Parts\Wire.cs" />
-     <Compile Include="Assets\Scripts\Simulation\ShipChips.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Digital\And.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Digital\DigitalProbe.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Mixed\AGreaterThanB.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Wires\AnalogueWire.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Wires\DigitalWire.cs" />
+     <Compile Include="Assets\Scripts\Simulation\ShipController.cs" />
      <Compile Include="Assets\Scripts\Simulation\Simulation.cs" />
      <Compile Include="Assets\Scripts\Util\EngineEvents.cs" />
+     <Compile Include="Assets\Scripts\Util\SpaceMath.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

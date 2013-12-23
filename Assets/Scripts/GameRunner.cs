@@ -4,24 +4,32 @@ using UnityEngine;
 internal class GameRunner : MonoBehaviour
 {
     private EngineEvents engineEvents;
-    private World world;
+    private readonly World world = new World();
 
     private void Start()
     {
-        engineEvents = gameObject.AddComponent<EngineEvents>();
-
+        SetupSingletons();
         SetupWorld();
+    }
+
+    private void SetupSingletons()
+    {
+        engineEvents = gameObject.AddComponent<EngineEvents>();
     }
 
     private void SetupWorld()
     {
-        world = new World();
-        AddShip(new BasicChip(), 1, 2);
-        AddShip(new PassiveScannerChip(), 2, 1);
+        CreateShip(new BasicChip(), 2, 4);
+//        CreateShip(new BasicChip(), -1, -2);
+//        CreateShip(new BasicChip(), -3, -1);
+        CreateShip(new BasicChip(), -1, -3);
+//        CreateShip(new PassiveChip(), 1, 3);
+//        CreateShip(new BasicChip(), -2, -5);
+   
     }
 
-    private void AddShip(ShipChip shipChip, float positionX, float positionY)
+    private void CreateShip(ShipChip shipChip, float positionX, float positionY)
     {
-        world.AddShip(new Ship(engineEvents, world, shipChip, positionX, positionY));
+        new ShipController(engineEvents, world, shipChip, positionX, positionY);
     }
 }

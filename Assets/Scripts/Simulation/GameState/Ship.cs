@@ -1,32 +1,34 @@
-﻿using UnityEngine;
-
-internal class Ship
+﻿internal class Ship
 {
-    private readonly ShipModel shipModel;
-    private GameObject shipView;
+    private readonly Simulation simulation;
+    public float X;
+    public float Y;
+    public float RotationInDegrees;
 
-    public Ship(EngineEvents engineEvents, World world, ShipChip shipChip, float positionX, float positionY)
+    public int ShipId;
+    private static int shipCount;
+
+    public Ship(World world, ShipChip shipChip, float initalX, float initalY, float rotationInDegrees)
     {
-        shipModel = new ShipModel(world, shipChip, positionX, positionY);
-        shipModel.StartSimulation();
+        shipCount += 1;
+        ShipId = shipCount;
 
-        engineEvents.OnStart += OnStart;
-        engineEvents.OnUpdate += OnUpdate;
-        engineEvents.OnGameEnd += OnGameEnd;
+        RotationInDegrees = rotationInDegrees;
+        X = initalX;
+        Y = initalY;
+
+        simulation = new Simulation();
+
+        shipChip.Setup(this, world, simulation);
     }
 
-    private void OnStart()
+    public void StartSimulation()
     {
-        shipView = Object.Instantiate(Resources.Load<GameObject>(ResourcePaths.ShipResourcePath)) as GameObject;
+        simulation.Start();
     }
 
-    private void OnUpdate()
+    public void StopSimulation()
     {
-        shipView.transform.position = new Vector3(shipModel.PositionX, shipModel.PositionY);
-    }
-
-    private void OnGameEnd()
-    {
-        shipModel.StopSimulation();
+        simulation.Stop();
     }
 }
