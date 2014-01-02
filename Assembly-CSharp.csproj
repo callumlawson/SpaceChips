@@ -71,6 +71,7 @@
      <Compile Include="Assets\Scripts\Simulation\Parts\Components\Digital\Util\DigitalConstant.cs" />
      <Compile Include="Assets\Scripts\Simulation\Parts\Components\Digital\Util\DigitalProbe.cs" />
      <Compile Include="Assets\Scripts\Simulation\Parts\Components\Mixed\AGreaterThanB.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Mixed\ASuppressB.cs" />
      <Compile Include="Assets\Scripts\Simulation\Parts\Components\Wires\AnalogueWire.cs" />
      <Compile Include="Assets\Scripts\Simulation\Parts\Components\Wires\DigitalWire.cs" />
      <Compile Include="Assets\Scripts\Simulation\Parts\Components\Wires\Wire.cs" />

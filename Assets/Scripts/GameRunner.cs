@@ -18,8 +18,8 @@ internal class GameRunner : MonoBehaviour
 
     private void SetupWorld()
     {
-        CreateShip(new OrbitChip(), 4, 5);
-        CreateShip(new PassiveChip(), -1, -3);
+        CreateShip(new BasicChip(), 4, 5);
+        CreateShip(new CowardChip(), -1, -3);
     }
 
     private void CreateShip(ShipChip shipChip, float positionX, float positionY)
