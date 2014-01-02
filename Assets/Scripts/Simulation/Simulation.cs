@@ -15,6 +15,7 @@ internal class Simulation
     }
 
     public event Action ClockEdge;
+    public event Action AfterClockEdge;
 
     public void Start()
     {
@@ -37,6 +38,7 @@ internal class Simulation
     private void OnClockEdge(object source, ElapsedEventArgs e)
     {
         ClockEdge.Invoke();
+        AfterClockEdge.Invoke();
     }
 }
 

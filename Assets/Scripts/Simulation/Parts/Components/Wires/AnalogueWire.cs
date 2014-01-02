@@ -1,4 +1,4 @@
-﻿internal class AnalogueWire
+﻿internal class AnalogueWire : Wire<float>
 {
-    public float SignalValue { get; set; }
+    public AnalogueWire(Simulation simulation) : base(simulation) {}
 }

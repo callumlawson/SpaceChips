@@ -1,4 +1,4 @@
-﻿internal class DigitalWire
+﻿internal class DigitalWire : Wire<bool>
 {
-    public bool SignalValue { get; set; }
+    public DigitalWire(Simulation simulation) : base(simulation) {}
 }

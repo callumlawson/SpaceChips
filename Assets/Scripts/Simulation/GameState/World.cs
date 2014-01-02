@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 internal class World
 {
@@ -14,6 +12,8 @@ internal class World
 
     public Ship GetNearestShip(Ship shipDoingQuery)
     {
-        return ships.Where(ship => ship.ShipId != shipDoingQuery.ShipId).OrderBy(ship => SpaceMath.DistanceBetweenTwoPoints(shipDoingQuery.X, shipDoingQuery.Y, ship.X, ship.Y)).FirstOrDefault();
+        return ships.Where(ship => ship.ShipId != shipDoingQuery.ShipId)
+            .OrderBy(ship => SpaceMath.DistanceBetweenTwoPoints(shipDoingQuery.X, shipDoingQuery.Y, ship.X, ship.Y))
+            .FirstOrDefault();
     }
 }
