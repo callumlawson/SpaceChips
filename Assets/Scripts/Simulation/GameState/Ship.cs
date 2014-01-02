@@ -6,38 +6,70 @@ internal class Ship
     public float Y;
     public float RotationInDegrees;
     public int ShipId;
-    public bool IsAlive = true;
-
     private static int shipCount;
+
+    private const float CollisionDistance = 0.6f;
+
+    private readonly EngineEvents engineEvents;
+    private GameObject shipView;
     private readonly Simulation simulation;
     private readonly World world;
-    private const float CollisionDistance = 0.2f;
 
-    public Ship(World world, ShipChip shipChip, float initalX, float initalY, float rotationInDegrees)
+    public Ship(EngineEvents engineEvents, World world, ShipChip shipChip, float positionX, float positionY)
     {
-        this.world = world;
+        engineEvents.OnStart += OnStart;
+        engineEvents.OnUpdate += OnUpdate;
+        engineEvents.OnGameEnd += OnGameEnd;
+
         shipCount += 1;
         ShipId = shipCount;
 
-        RotationInDegrees = rotationInDegrees;
-        X = initalX;
-        Y = initalY;
+        this.engineEvents = engineEvents;
+        this.world = world;
+        X = positionX;
+        Y = positionY;
 
+        world.AddShip(this);
         simulation = new Simulation();
-        simulation.ClockEdge += UpdateState;
         shipChip.Setup(this, world, simulation);
         simulation.Start();
     }
 
-    public void Kill()
+    public void Destroy()
     {
-        IsAlive = false;
+        simulation.Stop();
+        Object.Destroy(shipView);
+
+        engineEvents.OnStart -= OnStart;
+        engineEvents.OnUpdate -= OnUpdate;
+        engineEvents.OnGameEnd -= OnGameEnd;
     }
 
-    private void UpdateState()
+    private void OnStart()
     {
+        CreateShipView();
+    }
+
+    private void OnUpdate()
+    {
+        UpdateShipView();
         CheckForCollision();
-        CheckForDeath();
+    }
+
+    private void OnGameEnd()
+    {
+        Destroy();
+    }
+
+    private void CreateShipView()
+    {
+        shipView = Object.Instantiate(Resources.Load<GameObject>(ResourcePaths.ShipResourcePath)) as GameObject;
+    }
+
+    private void UpdateShipView()
+    {
+        shipView.transform.position = new Vector3(X, Y);
+        shipView.transform.rotation = Quaternion.Euler(0.0f, 0.0f, RotationInDegrees);
     }
 
     private void CheckForCollision()
@@ -47,18 +79,9 @@ internal class Ship
         {
             if (SpaceMath.DistanceBetweenTwoPoints(X, Y, nearestShip.X, nearestShip.Y) <= CollisionDistance)
             {
-                nearestShip.Kill();
-                Kill();
+                nearestShip.Destroy();
+                Destroy();
             }
-        }
-    }
-
-    private void CheckForDeath()
-    {
-        if (!IsAlive)
-        {
-            Debug.Log("Ship Id: " + ShipId + " has been destroyed");
-            simulation.Stop();
         }
     }
 }

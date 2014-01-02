@@ -74,7 +74,6 @@
      <Compile Include="Assets\Scripts\Simulation\Parts\Components\Wires\AnalogueWire.cs" />
      <Compile Include="Assets\Scripts\Simulation\Parts\Components\Wires\DigitalWire.cs" />
      <Compile Include="Assets\Scripts\Simulation\Parts\Components\Wires\Wire.cs" />
-     <Compile Include="Assets\Scripts\Simulation\ShipController.cs" />
      <Compile Include="Assets\Scripts\Simulation\Simulation.cs" />
      <Compile Include="Assets\Scripts\Util\EngineEvents.cs" />
      <Compile Include="Assets\Scripts\Util\SpaceMath.cs" />
