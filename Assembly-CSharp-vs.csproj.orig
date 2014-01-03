@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+	<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+	<ProductVersion>10.0.20506</ProductVersion>
+	<SchemaVersion>2.0</SchemaVersion>
+	<ProjectGuid>{19EB0C9C-E29B-EC40-2A00-E8C10187658E}</ProjectGuid>
+	<OutputType>Library</OutputType>
+	<AppDesignerFolder>Properties</AppDesignerFolder>
+	<RootNamespace></RootNamespace>
+	<AssemblyName>Assembly-CSharp</AssemblyName>
+	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+	<FileAlignment>512</FileAlignment>
+	<BaseDirectory>Assets</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+	<DebugSymbols>true</DebugSymbols>
+	<DebugType>full</DebugType>
+	<Optimize>false</Optimize>
+	<OutputPath>Temp\bin\Debug\</OutputPath>
+	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_GENERICS;ENABLE_SUBSTANCE;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;UNITY_4_3_1;UNITY_4_3;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+	<DebugType>pdbonly</DebugType>
+	<Optimize>true</Optimize>
+	<OutputPath>Temp\bin\Release\</OutputPath>
+	<DefineConstants>TRACE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+	<Reference Include="System" />
+    <Reference Include="System.XML" />
+	<Reference Include="System.Core" />
+	<Reference Include="System.Xml.Linq" />
+	<Reference Include="UnityEngine">
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEditor">
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	</Reference>
+  </ItemGroup>
+  <ItemGroup>
+     <Compile Include="Assets\Resources\ResourcePaths.cs" />
+     <Compile Include="Assets\Resources\ShipChips.cs" />
+     <Compile Include="Assets\Scripts\GameRunner.cs" />
+     <Compile Include="Assets\Scripts\Simulation\GameState\Ship.cs" />
+     <Compile Include="Assets\Scripts\Simulation\GameState\World.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Analogue\ALU\AAddB.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Analogue\ALU\ADividedByB.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Analogue\ALU\AMinusB.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Analogue\ALU\ATimesB.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Analogue\ShipModules\BasicTurret.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Analogue\ShipModules\OmniThruster.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Analogue\ShipModules\Scanner.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Analogue\Util\AnalogueBuffer.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Analogue\Util\AnalogueConstant.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Analogue\Util\AnalogueProbe.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Component.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Digital\LogicGates\And.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Digital\LogicGates\Nand.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Digital\LogicGates\Nor.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Digital\LogicGates\Not.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Digital\LogicGates\Or.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Digital\LogicGates\Xor.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Digital\Util\DigitalBuffer.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Digital\Util\DigitalConstant.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Digital\Util\DigitalProbe.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Mixed\AGreaterThanB.cs" />
+<<<<<<< HEAD
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Mixed\ASuppressB.cs" />
+=======
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\VisualisedComponent.cs" />
+>>>>>>> Added engine events to components. Added Visualised components.
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Wires\AnalogueWire.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Wires\DigitalWire.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Wires\Wire.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Simulation.cs" />
+     <Compile Include="Assets\Scripts\Util\EngineEvents.cs" />
+     <Compile Include="Assets\Scripts\Util\SpaceMath.cs" />
+     <Compile Include="Assets\Scripts\Visualisation\TurretVisualiser.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  
+</Project>
