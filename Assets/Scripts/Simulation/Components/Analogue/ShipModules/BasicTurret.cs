@@ -29,7 +29,6 @@ internal class BasicTurret : VisualisedComponent
             return;
         }
 
-        Debug.LogWarning("Lazer fired");
         currentLazerCooldown = LazerCooldownDuration;
 
         var turretPosition = new Vector2(ModelView.transform.position.x, ModelView.transform.position.y);
