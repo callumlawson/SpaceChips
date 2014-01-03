@@ -8,10 +8,9 @@ internal class Ship
     public float PositionY;
     public float RotationInDegrees;
     public int Team;
-    public int ShipId;
+    public int InstanceId;
     public event Action OnShipDestroyed;
 
-    private static int shipCount;
     private const float CollisionDistance = 0.6f;
 
     private readonly EngineEvents engineEvents;
@@ -21,13 +20,10 @@ internal class Ship
 
     public Ship(EngineEvents engineEvents, World world, ShipChip shipChip, int team, float positionX, float positionY)
     {
-        shipCount += 1;
-
         this.engineEvents = engineEvents;
         this.world = world;
         PositionX = positionX;
         PositionY = positionY;
-        ShipId = shipCount;
         Team = team; 
 
         engineEvents.OnStart += OnStart;
@@ -35,7 +31,7 @@ internal class Ship
         engineEvents.OnGameEnd += Destroy;
 
         world.AddShip(this);
-        simulation = new Simulation();
+        simulation = new Simulation(engineEvents);
         shipChip.Setup(engineEvents, this, world, simulation);
         simulation.Start();
     }
@@ -48,6 +44,7 @@ internal class Ship
         }
         
         simulation.Stop();
+        world.RemoveShip(this);
         Object.Destroy(shipView);
 
         engineEvents.OnStart -= OnStart;
@@ -69,6 +66,7 @@ internal class Ship
     private void CreateShipView()
     {
         shipView = Object.Instantiate(Resources.Load<GameObject>(ResourcePaths.ShipResourcePath)) as GameObject;
+        if (shipView != null) InstanceId = shipView.GetInstanceID();
     }
 
     private void UpdateShipView()

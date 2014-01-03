@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Timers;
 using UnityEngine;
 
 //Dis be prototype and evil!
 
 internal class Simulation
 {
-    private const int IntervalInMillis = 20;
-    private readonly Timer timer = new Timer();
+    private bool isRunning = false;
 
-    public Simulation()
+    public Simulation(EngineEvents engineEvents)
     {
-        SetupClock();
+        engineEvents.OnUpdate += OnUpdate;
     }
 
     public event Action ClockEdge;
@@ -19,27 +17,24 @@ internal class Simulation
 
     public void Start()
     {
-        timer.Enabled = true;
+        isRunning = true;
         Debug.Log("Simulation Started");
     }
 
     public void Stop()
     {
-        timer.Enabled = false;
+        isRunning = false;
         Debug.Log("Simulation Stopped");
     }
 
-    private void SetupClock()
+    private void OnUpdate()
     {
-        timer.Interval = IntervalInMillis;
-        timer.Elapsed += OnClockEdge;
-    }
-
-    private void OnClockEdge(object source, ElapsedEventArgs e)
-    {
-        ClockEdge.Invoke();
-        AfterClockEdge.Invoke();
-    }
+        if (isRunning)
+        {
+            ClockEdge.Invoke();
+            AfterClockEdge.Invoke();
+        }
+    } 
 }
 
 //For Later fun times

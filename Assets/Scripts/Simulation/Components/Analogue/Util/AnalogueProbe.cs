@@ -13,6 +13,6 @@ internal class AnalogueProbe : Component
 
     public override void OnClockEdge()
     {
-        Debug.Log(probeName + "Ship Id: " + Ship.ShipId + " probe value: " + instrumentedAnalogueWire.SignalValue);
+        Debug.Log(probeName + "Ship Id: " + Ship.InstanceId + " probe value: " + instrumentedAnalogueWire.SignalValue);
     }
 }

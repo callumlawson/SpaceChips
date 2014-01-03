@@ -13,6 +13,6 @@ internal class DigitalProbe : Component
 
     public override void OnClockEdge()
     {
-        Debug.Log(probeName + "Ship Id: " + Ship.ShipId + " probe value: " + instrumentedDigitalWire.SignalValue);
+        Debug.Log(probeName + "Ship Id: " + Ship.InstanceId + " probe value: " + instrumentedDigitalWire.SignalValue);
     }
 }

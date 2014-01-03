@@ -10,24 +10,34 @@ internal class World
         ships.Add(ship);
     }
 
+    public void RemoveShip(Ship ship)
+    {
+        ships.Remove(ship);
+    }
+
     public Ship GetNearestShip(Ship shipDoingQuery)
     {
-        return ships.Where(ship => ship.ShipId != shipDoingQuery.ShipId)
+        return ships.Where(ship => ship.InstanceId != shipDoingQuery.InstanceId)
             .OrderBy(ship => SpaceMath.DistanceBetweenTwoPoints(shipDoingQuery.PositionX, shipDoingQuery.PositionY, ship.PositionX, ship.PositionY))
             .FirstOrDefault();
     }
 
     public Ship GetNearestShipOnTeam(Ship shipDoingQuery, int team)
     {
-        return ships.Where(ship => ship.ShipId != shipDoingQuery.ShipId)
+        return ships.Where(ship => ship.InstanceId != shipDoingQuery.InstanceId)
             .OrderBy(ship => SpaceMath.DistanceBetweenTwoPoints(shipDoingQuery.PositionX, shipDoingQuery.PositionY, ship.PositionX, ship.PositionY))
             .FirstOrDefault(ship => ship.Team == team);
     }
 
     public Ship GetNearestShipNotOnTeam(Ship shipDoingQuery, int team)
     {
-        return ships.Where(ship => ship.ShipId != shipDoingQuery.ShipId)
+        return ships.Where(ship => ship.InstanceId != shipDoingQuery.InstanceId)
             .OrderBy(ship => SpaceMath.DistanceBetweenTwoPoints(shipDoingQuery.PositionX, shipDoingQuery.PositionY, ship.PositionX, ship.PositionY))
             .FirstOrDefault(ship => ship.Team != team);
+    }
+
+    public Ship GetShipByShipId(int shipId)
+    {
+        return ships.FirstOrDefault(ship => ship.InstanceId == shipId);
     }
 }

@@ -14,8 +14,11 @@
     public override void OnClockEdge()
     {
         Ship nearestShip = ShipSelector();
-        bearingInput.SignalValue = SpaceMath.PositionsToBearing(Ship.PositionX, Ship.PositionY, nearestShip.PositionX, nearestShip.PositionY) - Ship.RotationInDegrees;
-        rangeInput.SignalValue = SpaceMath.DistanceBetweenTwoPoints(Ship.PositionX, Ship.PositionY, nearestShip.PositionX, nearestShip.PositionY);
+        if (nearestShip != null)
+        {
+            bearingInput.SignalValue = SpaceMath.PositionsToBearing(Ship.PositionX, Ship.PositionY, nearestShip.PositionX, nearestShip.PositionY) - Ship.RotationInDegrees;
+            rangeInput.SignalValue = SpaceMath.DistanceBetweenTwoPoints(Ship.PositionX, Ship.PositionY, nearestShip.PositionX, nearestShip.PositionY);
+        }
     }
 
     protected abstract Ship ShipSelector();
