@@ -1,18 +1,17 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Object = UnityEngine.Object;
 
 internal class Ship
 {
-    //Todo - Ship needs proper lifecycle. Components need to deregister events on ship death. 
-
-    public float X;
-    public float Y;
+    public float PositionX;
+    public float PositionY;
     public float RotationInDegrees;
+    public int Team;
     public int ShipId;
+    public event Action OnShipDestroyed;
+
     private static int shipCount;
-
-    //Todo remove this
-    public bool IsAlive = true;
-
     private const float CollisionDistance = 0.6f;
 
     private readonly EngineEvents engineEvents;
@@ -20,19 +19,20 @@ internal class Ship
     private readonly Simulation simulation;
     private readonly World world;
 
-    public Ship(EngineEvents engineEvents, World world, ShipChip shipChip, float positionX, float positionY)
+    public Ship(EngineEvents engineEvents, World world, ShipChip shipChip, int team, float positionX, float positionY)
     {
-        engineEvents.OnStart += OnStart;
-        engineEvents.OnUpdate += OnUpdate;
-        engineEvents.OnGameEnd += OnGameEnd;
-
         shipCount += 1;
-        ShipId = shipCount;
 
         this.engineEvents = engineEvents;
         this.world = world;
-        X = positionX;
-        Y = positionY;
+        PositionX = positionX;
+        PositionY = positionY;
+        ShipId = shipCount;
+        Team = team; 
+
+        engineEvents.OnStart += OnStart;
+        engineEvents.OnUpdate += OnUpdate;
+        engineEvents.OnGameEnd += Destroy;
 
         world.AddShip(this);
         simulation = new Simulation();
@@ -42,13 +42,17 @@ internal class Ship
 
     public void Destroy()
     {
-        IsAlive = false;
+        if (OnShipDestroyed != null)
+        {
+            OnShipDestroyed.Invoke();
+        }
+        
         simulation.Stop();
         Object.Destroy(shipView);
 
         engineEvents.OnStart -= OnStart;
         engineEvents.OnUpdate -= OnUpdate;
-        engineEvents.OnGameEnd -= OnGameEnd;
+        engineEvents.OnGameEnd -= Destroy;
     }
 
     private void OnStart()
@@ -62,11 +66,6 @@ internal class Ship
         CheckForCollision();
     }
 
-    private void OnGameEnd()
-    {
-        Destroy();
-    }
-
     private void CreateShipView()
     {
         shipView = Object.Instantiate(Resources.Load<GameObject>(ResourcePaths.ShipResourcePath)) as GameObject;
@@ -74,7 +73,7 @@ internal class Ship
 
     private void UpdateShipView()
     {
-        shipView.transform.position = new Vector3(X, Y);
+        shipView.transform.position = new Vector3(PositionX, PositionY);
         shipView.transform.rotation = Quaternion.Euler(0.0f, 0.0f, RotationInDegrees);
     }
 
@@ -83,7 +82,7 @@ internal class Ship
         var nearestShip = world.GetNearestShip(this);
         if (nearestShip != null)
         {
-            if (SpaceMath.DistanceBetweenTwoPoints(X, Y, nearestShip.X, nearestShip.Y) <= CollisionDistance)
+            if (SpaceMath.DistanceBetweenTwoPoints(PositionX, PositionY, nearestShip.PositionX, nearestShip.PositionY) <= CollisionDistance)
             {
                 nearestShip.Destroy();
                 Destroy();

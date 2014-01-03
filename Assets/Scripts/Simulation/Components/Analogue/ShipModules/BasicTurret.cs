@@ -14,7 +14,7 @@ internal class BasicTurret : VisualisedComponent
 
     public override void OnClockEdge()
     {
-        turretVisualiser.RotationInDegrees = bearingInput.SignalValue + ship.RotationInDegrees + 20.0f;
+        turretVisualiser.RotationInDegrees = bearingInput.SignalValue + ship.RotationInDegrees;
     }
 
     public override void CreateModuleView()

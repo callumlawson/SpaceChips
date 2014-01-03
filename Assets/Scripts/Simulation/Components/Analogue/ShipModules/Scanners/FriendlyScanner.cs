@@ -1,0 +1,10 @@
+﻿internal class FriendlyScanner : ScannerComponent
+{
+    public FriendlyScanner(EngineEvents engineEvents, Simulation simulation, Ship ship, World world, AnalogueWire rangeInput, AnalogueWire bearingInput)
+        : base(engineEvents, simulation, ship, world, rangeInput, bearingInput) { }
+
+    protected override Ship ShipSelector()
+    {
+        return World.GetNearestShipOnTeam(Ship, Ship.Team);
+    }
+}

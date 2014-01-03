@@ -11,7 +11,7 @@ internal class BasicChip : ShipChip
         var bearingWire = new AnalogueWire(simulation);
         var thrustMangnitudeWire = new AnalogueWire(simulation);
 
-        new Scanner(engineEvents, simulation, ship, world, rangeWire, bearingWire);
+        new BasicScanner(engineEvents, simulation, ship, world, rangeWire, bearingWire);
         new AnalogueProbe(engineEvents, simulation, ship, world, "Bearing", bearingWire);
         new AnalogueConstant(engineEvents, simulation, ship, world, 0.01f, thrustMangnitudeWire);
         new OmniThruster(engineEvents, simulation, ship, world, bearingWire, thrustMangnitudeWire);
@@ -38,7 +38,7 @@ internal class CowardChip : ShipChip
         new AMinusB(engineEvents, simulation, ship, world, bearingWire, negativeBearingWire, finalBearingWire);
 		new ASuppressB(engineEvents, simulation, ship, world, logicOutputWire, thrustMangnitudeWire, finalThrustWire);
         new AGreaterThanB(engineEvents, simulation, ship, world, rangeWire, stallDistWire, logicOutputWire);
-        new Scanner(engineEvents, simulation, ship, world, rangeWire, bearingWire);
+        new BasicScanner(engineEvents, simulation, ship, world, rangeWire, bearingWire);
         new OmniThruster(engineEvents, simulation, ship, world, finalBearingWire, finalThrustWire);
 	}
 }
@@ -61,7 +61,7 @@ internal class OrbitChip : ShipChip
 		var orbitBearing = new AnalogueWire(simulation);
 		var netBearingWire = new AnalogueWire(simulation);
 
-        new Scanner(engineEvents, simulation, ship, world, distWire, bearingWire);
+        new BasicScanner(engineEvents, simulation, ship, world, distWire, bearingWire);
 
 		//Thrust calculations
         new AnalogueConstant(engineEvents, simulation, ship, world, 0.5f, constDistWire);
@@ -76,7 +76,6 @@ internal class OrbitChip : ShipChip
         new AAddB(engineEvents, simulation, ship, world, orbitBearing, bearingWire, netBearingWire);
 
         new OmniThruster(engineEvents, simulation, ship, world, netBearingWire, netThrustWire);
-
 	}
 }
 

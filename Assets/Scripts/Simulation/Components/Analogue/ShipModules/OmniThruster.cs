@@ -16,8 +16,8 @@ internal class OmniThruster : Component
     {
         var thrustBearing = bearingInput.SignalValue + Ship.RotationInDegrees;
         var thrustVector = SpaceMath.BearingToNormalizedVector2(thrustBearing)*thrustMagnitudeInput.SignalValue;
-        Ship.X += thrustVector.x;
-        Ship.Y += thrustVector.y;
+        Ship.PositionX += thrustVector.x;
+        Ship.PositionY += thrustVector.y;
 
         Ship.RotationInDegrees = Mathf.Lerp(Ship.RotationInDegrees, thrustBearing, 0.04f);
     }

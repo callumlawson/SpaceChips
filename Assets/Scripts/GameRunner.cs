@@ -25,6 +25,6 @@ internal class GameRunner : MonoBehaviour
 
     private void CreateShip(ShipChip shipChip, float positionX, float positionY)
     {
-        new Ship(engineEvents, world, shipChip, positionX, positionY);
+        new Ship(engineEvents, world, shipChip, 0, positionX, positionY);
     }
 }

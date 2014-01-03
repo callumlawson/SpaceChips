@@ -12,7 +12,9 @@ internal abstract class VisualisedComponent : Component
         this.ship = ship;
         engineEvents.OnStart += OnStart;
         engineEvents.OnUpdate += OnUpdate;
-        engineEvents.OnGameEnd += OnGameEnd;
+        //Todo - Need to tidy this up.
+        engineEvents.OnGameEnd += Destroy;
+        ship.OnShipDestroyed += Destroy;
     }
 
     public abstract void CreateModuleView();
@@ -24,29 +26,15 @@ internal abstract class VisualisedComponent : Component
 
     private void OnUpdate()
     {
-        ModelView.transform.position = new Vector3(ship.X, ship.Y);
-        CheckShipState();
-    }
-
-    //TODO Get rid of this evil
-    private void CheckShipState()
-    {
-        if (!ship.IsAlive)
-        {
-            Destroy();
-        }
-    }
-
-    private void OnGameEnd()
-    {
-        Destroy();
+        ModelView.transform.position = new Vector3(ship.PositionX, ship.PositionY);
     }
 
     private void Destroy()
     {
         Object.Destroy(ModelView);
         engineEvents.OnStart -= OnStart;
-        engineEvents.OnGameEnd -= OnGameEnd;
         engineEvents.OnUpdate -= OnUpdate;
+        engineEvents.OnGameEnd -= Destroy;
+        ship.OnShipDestroyed -= Destroy;
     }
 }

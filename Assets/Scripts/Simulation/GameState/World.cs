@@ -13,7 +13,21 @@ internal class World
     public Ship GetNearestShip(Ship shipDoingQuery)
     {
         return ships.Where(ship => ship.ShipId != shipDoingQuery.ShipId)
-            .OrderBy(ship => SpaceMath.DistanceBetweenTwoPoints(shipDoingQuery.X, shipDoingQuery.Y, ship.X, ship.Y))
+            .OrderBy(ship => SpaceMath.DistanceBetweenTwoPoints(shipDoingQuery.PositionX, shipDoingQuery.PositionY, ship.PositionX, ship.PositionY))
             .FirstOrDefault();
+    }
+
+    public Ship GetNearestShipOnTeam(Ship shipDoingQuery, int team)
+    {
+        return ships.Where(ship => ship.ShipId != shipDoingQuery.ShipId)
+            .OrderBy(ship => SpaceMath.DistanceBetweenTwoPoints(shipDoingQuery.PositionX, shipDoingQuery.PositionY, ship.PositionX, ship.PositionY))
+            .FirstOrDefault(ship => ship.Team == team);
+    }
+
+    public Ship GetNearestShipNotOnTeam(Ship shipDoingQuery, int team)
+    {
+        return ships.Where(ship => ship.ShipId != shipDoingQuery.ShipId)
+            .OrderBy(ship => SpaceMath.DistanceBetweenTwoPoints(shipDoingQuery.PositionX, shipDoingQuery.PositionY, ship.PositionX, ship.PositionY))
+            .FirstOrDefault(ship => ship.Team != team);
     }
 }
