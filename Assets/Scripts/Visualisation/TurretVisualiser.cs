@@ -17,7 +17,7 @@ internal class TurretVisualiser : MonoBehaviour
 
     void Update()
     {
-        gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, RotationInDegrees);
+        gameObject.transform.rotation = Quaternion.Lerp(gameObject.transform.rotation, Quaternion.Euler(0.0f, 0.0f, RotationInDegrees), 0.5f);
     }
 
     public void FireLazer(Vector2 origin, Vector2 destination)
