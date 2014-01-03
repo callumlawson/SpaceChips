@@ -3,10 +3,11 @@
     protected Ship Ship;
     protected World World;
 
-    protected Component(Simulation simulation, Ship ship, World world)
+    protected Component(EngineEvents engineEvents, Simulation simulation, Ship ship, World world)
     {
         Ship = ship;
         World = world;
+        //Todo - unregister this!
         simulation.ClockEdge += OnClockEdge;
     }
 

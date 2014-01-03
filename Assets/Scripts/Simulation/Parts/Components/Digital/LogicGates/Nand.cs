@@ -4,7 +4,8 @@
     private readonly DigitalWire bInput;
     private readonly DigitalWire resultOutput;
 
-    public Nand(Simulation simulation, Ship ship, World world, DigitalWire aInput, DigitalWire bInput,DigitalWire resultOutput) : base(simulation, ship, world)
+    public Nand(EngineEvents engineEvents, Simulation simulation, Ship ship, World world, DigitalWire aInput, DigitalWire bInput, DigitalWire resultOutput)
+        : base(engineEvents, simulation, ship, world)
     {
         this.resultOutput = resultOutput;
         this.bInput = bInput;

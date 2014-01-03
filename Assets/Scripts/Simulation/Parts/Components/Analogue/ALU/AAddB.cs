@@ -5,8 +5,8 @@
     private readonly AnalogueWire bInput;
     private readonly AnalogueWire resultOutput;
 
-    public AAddB(Simulation simulation, Ship ship, World world, AnalogueWire aInput, AnalogueWire bInput, AnalogueWire resultOutput)
-        : base(simulation, ship, world)
+    public AAddB(EngineEvents engineEvents, Simulation simulation, Ship ship, World world, AnalogueWire aInput, AnalogueWire bInput, AnalogueWire resultOutput)
+        : base(engineEvents, simulation, ship, world)
     {
         this.resultOutput = resultOutput;
         this.bInput = bInput;

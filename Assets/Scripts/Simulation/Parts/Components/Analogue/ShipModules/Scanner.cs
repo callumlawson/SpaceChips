@@ -5,8 +5,8 @@ internal class Scanner : Component
     private readonly AnalogueWire bearingOutput;
     private readonly AnalogueWire rangeOutput;
 
-    public Scanner(Simulation simulation, Ship ship, World world, AnalogueWire rangeOutput, AnalogueWire bearingOutput)
-        : base(simulation, ship, world)
+    public Scanner(EngineEvents engineEvents, Simulation simulation, Ship ship, World world, AnalogueWire rangeOutput, AnalogueWire bearingOutput)
+        : base(engineEvents, simulation, ship, world)
     {
         this.rangeOutput = rangeOutput;
         this.bearingOutput = bearingOutput;

@@ -3,7 +3,7 @@
     private readonly float constantValue;
     private readonly AnalogueWire constantValueOuput;
 
-    public AnalogueConstant(Simulation simulation, Ship ship, World world, float constantValue, AnalogueWire constantValueOuput) : base(simulation, ship, world)
+    public AnalogueConstant(EngineEvents engineEvents, Simulation simulation, Ship ship, World world, float constantValue, AnalogueWire constantValueOuput) : base(engineEvents, simulation, ship, world)
     {
         this.constantValueOuput = constantValueOuput;
         this.constantValue = constantValue;

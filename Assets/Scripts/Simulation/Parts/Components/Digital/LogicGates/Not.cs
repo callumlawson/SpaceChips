@@ -3,8 +3,8 @@
     private DigitalWire signalInput;
     private DigitalWire negatedOutput;
 
-    public Not(Simulation simulation, Ship ship, World world, DigitalWire signalInput, DigitalWire negatedOutput)
-        : base(simulation, ship, world)
+    public Not(EngineEvents engineEvents, Simulation simulation, Ship ship, World world, DigitalWire signalInput, DigitalWire negatedOutput)
+        : base(engineEvents, simulation, ship, world)
     {
         this.negatedOutput = negatedOutput;
         this.signalInput = signalInput;

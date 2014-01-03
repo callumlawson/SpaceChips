@@ -2,11 +2,16 @@
 
 internal class Ship
 {
+    //Todo - Ship needs proper lifecycle. Components need to deregister events on ship death. 
+
     public float X;
     public float Y;
     public float RotationInDegrees;
     public int ShipId;
     private static int shipCount;
+
+    //Todo remove this
+    public bool IsAlive = true;
 
     private const float CollisionDistance = 0.6f;
 
@@ -31,12 +36,13 @@ internal class Ship
 
         world.AddShip(this);
         simulation = new Simulation();
-        shipChip.Setup(this, world, simulation);
+        shipChip.Setup(engineEvents, this, world, simulation);
         simulation.Start();
     }
 
     public void Destroy()
     {
+        IsAlive = false;
         simulation.Stop();
         Object.Destroy(shipView);
 

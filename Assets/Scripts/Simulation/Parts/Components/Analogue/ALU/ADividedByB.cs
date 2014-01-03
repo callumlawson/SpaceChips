@@ -5,8 +5,8 @@
     private readonly AnalogueWire bInput;
     private readonly AnalogueWire resultOutput;
 
-    public ADividedByB(Simulation simulation, Ship ship, World world, AnalogueWire aInput, AnalogueWire bInput, AnalogueWire resultOutput)
-        : base(simulation, ship, world)
+    public ADividedByB(EngineEvents engineEvents, Simulation simulation, Ship ship, World world, AnalogueWire aInput, AnalogueWire bInput, AnalogueWire resultOutput)
+        : base(engineEvents, simulation, ship, world)
     {
         this.resultOutput = resultOutput;
         this.bInput = bInput;

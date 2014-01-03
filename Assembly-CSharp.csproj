@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\Simulation\Parts\Components\Analogue\ALU\ADividedByB.cs" />
      <Compile Include="Assets\Scripts\Simulation\Parts\Components\Analogue\ALU\AMinusB.cs" />
      <Compile Include="Assets\Scripts\Simulation\Parts\Components\Analogue\ALU\ATimesB.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\Analogue\ShipModules\BasicTurret.cs" />
      <Compile Include="Assets\Scripts\Simulation\Parts\Components\Analogue\ShipModules\OmniThruster.cs" />
      <Compile Include="Assets\Scripts\Simulation\Parts\Components\Analogue\ShipModules\Scanner.cs" />
      <Compile Include="Assets\Scripts\Simulation\Parts\Components\Analogue\Util\AnalogueBuffer.cs" />
@@ -71,6 +72,7 @@
      <Compile Include="Assets\Scripts\Simulation\Parts\Components\Digital\Util\DigitalConstant.cs" />
      <Compile Include="Assets\Scripts\Simulation\Parts\Components\Digital\Util\DigitalProbe.cs" />
      <Compile Include="Assets\Scripts\Simulation\Parts\Components\Mixed\AGreaterThanB.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Parts\Components\VisualisedComponent.cs" />
      <Compile Include="Assets\Scripts\Simulation\Parts\Components\Mixed\ASuppressB.cs" />
      <Compile Include="Assets\Scripts\Simulation\Parts\Components\Wires\AnalogueWire.cs" />
      <Compile Include="Assets\Scripts\Simulation\Parts\Components\Wires\DigitalWire.cs" />
@@ -78,6 +80,7 @@
      <Compile Include="Assets\Scripts\Simulation\Simulation.cs" />
      <Compile Include="Assets\Scripts\Util\EngineEvents.cs" />
      <Compile Include="Assets\Scripts\Util\SpaceMath.cs" />
+     <Compile Include="Assets\Scripts\Visualisation\TurretVisualiser.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
