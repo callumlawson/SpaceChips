@@ -1,4 +1,6 @@
-﻿internal interface ShipChip
+﻿using System;
+
+internal interface ShipChip
 {
     void Setup(EngineEvents engineEvents, Ship ship, World world, Simulation simulation);
 }
@@ -15,7 +17,11 @@ internal class BasicChip : ShipChip
         new AnalogueProbe(engineEvents, simulation, ship, world, "Bearing", bearingWire);
         new AnalogueConstant(engineEvents, simulation, ship, world, 0.01f, thrustMangnitudeWire);
         new OmniThruster(engineEvents, simulation, ship, world, bearingWire, thrustMangnitudeWire);
-        new BasicTurret(engineEvents, simulation, ship, world, bearingWire);
+        var turret = new BasicTurret(engineEvents, simulation, ship, world, bearingWire);
+
+        //here be vis
+//        new SuperTurrentVis(turret, Type.Lazor);
+
     }
 }
 
