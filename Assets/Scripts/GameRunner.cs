@@ -2,6 +2,12 @@
 
 internal class GameRunner : MonoBehaviour
 {
+  /**
+  *Notes:
+  *Concentrate on "has a" not "is a" relationships
+  *Use JointJS for gui.
+  **/ 
+
     private readonly World world = new World();
     private EngineEvents engineEvents;
 
@@ -28,4 +34,6 @@ internal class GameRunner : MonoBehaviour
     {
         new Ship(engineEvents, world, shipChip, 0, positionX, positionY);
     }
+
+ 
 }

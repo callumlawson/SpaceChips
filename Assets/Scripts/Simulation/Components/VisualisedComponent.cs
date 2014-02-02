@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+//Remove in favour of a "has a"
+
 internal abstract class VisualisedComponent : Component
 {
     private readonly EngineEvents engineEvents;
