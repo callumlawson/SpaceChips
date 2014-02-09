@@ -14,7 +14,7 @@ public class BasicTurret : Component
     private readonly Ship ship;
     private readonly World world;
 
-    public BasicTurret(Simulation simulation, Ship ship, World world, AnalogueWire bearingInput) : base(simulation)
+    public BasicTurret(Simulation simulation, Ship ship, World world, AnalogueWire bearingInput) : base(simulation, ship)
     {
         this.world = world;
         this.ship = ship;

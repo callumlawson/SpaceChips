@@ -6,7 +6,7 @@ internal class DigitalProbe : Component
     private readonly string probeName;
     private readonly Ship ship;
 
-    public DigitalProbe(EngineEvents engineEvents, Simulation simulation, Ship ship, World world, string probeName,DigitalWire instrumentedDigitalWire) : base(simulation)
+    public DigitalProbe(EngineEvents engineEvents, Simulation simulation, Ship ship, World world, string probeName,DigitalWire instrumentedDigitalWire) : base(simulation, ship)
     {
         this.ship = ship;
         this.instrumentedDigitalWire = instrumentedDigitalWire;

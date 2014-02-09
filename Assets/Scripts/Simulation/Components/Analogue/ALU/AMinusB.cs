@@ -6,7 +6,7 @@
     private readonly AnalogueWire resultOutput;
 
     public AMinusB(Simulation simulation, Ship ship, World world, AnalogueWire aInput, AnalogueWire bInput, AnalogueWire resultOutput)
-        : base(simulation)
+        : base(simulation, ship)
     {
         this.resultOutput = resultOutput;
         this.bInput = bInput;

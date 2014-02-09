@@ -5,7 +5,7 @@
     private readonly DigitalWire resultOutput;
 
     public Nor(Simulation simulation, Ship ship, World world, DigitalWire aInput, DigitalWire bInput, DigitalWire resultOutput)
-        : base(simulation)
+        : base(simulation, ship)
     {
         this.resultOutput = resultOutput;
         this.bInput = bInput;

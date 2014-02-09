@@ -6,7 +6,7 @@ internal class AnalogueProbe : Component
     private readonly string probeName;
     private readonly Ship ship;
 
-    public AnalogueProbe(EngineEvents engineEvents, Simulation simulation, Ship ship, World world, string probeName, AnalogueWire instrumentedAnalogueWire) : base(simulation)
+    public AnalogueProbe(Simulation simulation, Ship ship, World world, string probeName, AnalogueWire instrumentedAnalogueWire) : base(simulation, ship)
     {
         this.ship = ship;
         this.instrumentedAnalogueWire = instrumentedAnalogueWire;

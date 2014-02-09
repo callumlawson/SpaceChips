@@ -63,7 +63,6 @@
     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\Util\AnalogueBuffer.cs" />
     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\Util\AnalogueConstant.cs" />
     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\Util\AnalogueProbe.cs" />
-    <Compile Include="Assets\Scripts\Simulation\Components\Component.cs" />
     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\Util\Digital\LogicGates\And.cs" />
     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\Util\Digital\LogicGates\Nand.cs" />
     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\Util\Digital\LogicGates\Nor.cs" />
@@ -73,6 +72,7 @@
     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\Util\Digital\Util\DigitalBuffer.cs" />
     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\Util\Digital\Util\DigitalConstant.cs" />
     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\Util\Digital\Util\DigitalProbe.cs" />
+    <Compile Include="Assets\Scripts\Simulation\Components\Component.cs" />
     <Compile Include="Assets\Scripts\Simulation\Components\Mixed\AGreaterThanB.cs" />
     <Compile Include="Assets\Scripts\Simulation\Components\Mixed\ASuppressB.cs" />
     <Compile Include="Assets\Scripts\Simulation\Components\Wires\AnalogueWire.cs" />
@@ -83,7 +83,9 @@
     <Compile Include="Assets\Scripts\Simulation\Simulation.cs" />
     <Compile Include="Assets\Scripts\Util\EngineEvents.cs" />
     <Compile Include="Assets\Scripts\Util\SpaceMath.cs" />
+    <Compile Include="Assets\Scripts\Visualisation\Controllers\ScannerVisualiserController.cs" />
     <Compile Include="Assets\Scripts\Visualisation\Controllers\TurretVisualiserController.cs" />
+    <Compile Include="Assets\Scripts\Visualisation\Visualisers\ScannerVisualiser.cs" />
     <Compile Include="Assets\Scripts\Visualisation\Visualisers\TurretVisualiser.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

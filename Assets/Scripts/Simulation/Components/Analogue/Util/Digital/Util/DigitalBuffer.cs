@@ -4,7 +4,7 @@
     private readonly DigitalWire bufferOutput;
 
     public DigitalBuffer(EngineEvents engineEvents, Simulation simulation, Ship ship, World world, DigitalWire bufferInput, DigitalWire bufferOutput)
-        : base(simulation)
+        : base(simulation, ship)
     {
         this.bufferOutput = bufferOutput;
         this.bufferInput = bufferInput;

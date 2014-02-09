@@ -4,7 +4,7 @@
     private readonly DigitalWire negatedOutput;
 
     public Not(EngineEvents engineEvents, Simulation simulation, Ship ship, World world, DigitalWire signalInput, DigitalWire negatedOutput)
-        : base(simulation)
+        : base(simulation, ship)
     {
         this.negatedOutput = negatedOutput;
         this.signalInput = signalInput;

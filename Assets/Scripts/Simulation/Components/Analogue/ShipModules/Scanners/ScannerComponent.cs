@@ -4,9 +4,9 @@
     private readonly AnalogueWire rangeInput;
     private readonly Ship ship;
 
-    protected ScannerComponent(EngineEvents engineEvents, Simulation simulation, Ship ship, World world,
+    protected ScannerComponent(Simulation simulation, Ship ship, World world,
         AnalogueWire rangeInput, AnalogueWire bearingInput)
-        : base(simulation)
+        : base(simulation, ship)
     {
         this.ship = ship;
         this.rangeInput = rangeInput;

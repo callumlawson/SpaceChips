@@ -9,9 +9,12 @@ namespace Assets.Scripts.Visualisation
         private GameObject turretModel;
         private TurretVisualiser turretVisualiser;
         private readonly string turretComponent;
+        private EngineEvents engineEvents;
 
-        public TurretVisualiserController(EngineEvents engineEvents, Simulation simulation, Ship ship, BasicTurret turret, string turretComponent)
+        public TurretVisualiserController(EngineEvents engineEvents, Ship ship, BasicTurret turret, string turretComponent)
         {
+            logicalTurret = turret;
+            this.engineEvents = engineEvents;
             this.turretComponent = turretComponent;
             logicalTurret = turret;
             this.ship = ship;
@@ -19,6 +22,8 @@ namespace Assets.Scripts.Visualisation
             SetupTurretModel();
 
             engineEvents.OnUpdate += UpdateTurretModel;
+
+            turret.OnComponentDestroyed += Destroy;
         }
 
         private void UpdateTurretModel()
@@ -48,6 +53,13 @@ namespace Assets.Scripts.Visualisation
             }
 
             logicalTurret.VisualiseLazerFiring += FireLazer;
+        }
+
+        private void Destroy()
+        {
+            engineEvents.OnUpdate -= UpdateTurretModel;
+            Object.Destroy(turretModel);
+            logicalTurret.OnComponentDestroyed -= Destroy;
         }
     }
 }

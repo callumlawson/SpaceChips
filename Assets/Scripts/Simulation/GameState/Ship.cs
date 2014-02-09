@@ -9,10 +9,10 @@ public class Ship
     public float RotationInDegrees;
     public int Team;
     public int InstanceId;
+
     public event Action OnShipDestroyed;
 
     private const float CollisionDistance = 0.6f;
-
     private readonly EngineEvents engineEvents;
     private GameObject shipView;
     private readonly Simulation simulation;
@@ -73,10 +73,6 @@ public class Ship
     {
         shipView.transform.position = new Vector3(PositionX, PositionY);
         shipView.transform.rotation = Quaternion.Euler(0.0f, 0.0f, RotationInDegrees);
-    }
-
-    private void AddVisualisedComponent() {
-        throw new NotImplementedException();
     }
 
     private void CheckForCollision()

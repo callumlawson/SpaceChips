@@ -7,7 +7,7 @@ internal class OmniThruster : Component
     private readonly Ship ship;
 
     public OmniThruster(Simulation simulation, Ship ship, World world, AnalogueWire bearingInput,
-        AnalogueWire thrustMagnitudeInput) : base(simulation)
+        AnalogueWire thrustMagnitudeInput) : base(simulation, ship)
     {
         this.ship = ship;
         this.bearingInput = bearingInput;

@@ -3,8 +3,8 @@
     private readonly AnalogueWire bufferInput;
     private readonly AnalogueWire bufferOutput;
 
-    public AnalogueBuffer(EngineEvents engineEvents, Simulation simulation, Ship ship, World world, AnalogueWire bufferInput, AnalogueWire bufferOutput)
-        : base(simulation)
+    public AnalogueBuffer(Simulation simulation, Ship ship, World world, AnalogueWire bufferInput, AnalogueWire bufferOutput)
+        : base(simulation, ship)
     {
         this.bufferInput = bufferInput;
         this.bufferOutput = bufferOutput;
