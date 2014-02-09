@@ -3,8 +3,8 @@
     private readonly Ship ship;
     private readonly World world;
 
-    public BasicScanner(Simulation simulation, Ship ship, World world, AnalogueWire rangeInput, AnalogueWire bearingInput)
-        : base(simulation, ship, world, rangeInput, bearingInput)
+    public BasicScanner(Simulation simulation, Ship ship, World world, AnalogueWire rangeOutput, AnalogueWire bearingOutput)
+        : base(simulation, ship, world, rangeOutput, bearingOutput)
     {
         this.world = world;
         this.ship = ship;

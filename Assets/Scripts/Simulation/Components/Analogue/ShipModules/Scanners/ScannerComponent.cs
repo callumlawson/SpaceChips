@@ -1,16 +1,15 @@
 ﻿abstract class ScannerComponent : Component
 {
-    private readonly AnalogueWire bearingInput;
-    private readonly AnalogueWire rangeInput;
+    private readonly AnalogueWire bearingOutput;
+    private readonly AnalogueWire rangeOutput;
     private readonly Ship ship;
 
-    protected ScannerComponent(Simulation simulation, Ship ship, World world,
-        AnalogueWire rangeInput, AnalogueWire bearingInput)
+    protected ScannerComponent(Simulation simulation, Ship ship, World world, AnalogueWire rangeOutput, AnalogueWire bearingOutput)
         : base(simulation, ship)
     {
         this.ship = ship;
-        this.rangeInput = rangeInput;
-        this.bearingInput = bearingInput;
+        this.rangeOutput = rangeOutput;
+        this.bearingOutput = bearingOutput;
     }
 
     public override void OnClockEdge()
@@ -18,8 +17,8 @@
         Ship nearestShip = ShipSelector();
         if (nearestShip != null)
         {
-            bearingInput.SignalValue = SpaceMath.PositionsToBearing(ship.PositionX, ship.PositionY, nearestShip.PositionX, nearestShip.PositionY) - ship.RotationInDegrees;
-            rangeInput.SignalValue = SpaceMath.DistanceBetweenTwoPoints(ship.PositionX, ship.PositionY, nearestShip.PositionX, nearestShip.PositionY);
+            bearingOutput.SignalValue = SpaceMath.PositionsToBearing(ship.PositionX, ship.PositionY, nearestShip.PositionX, nearestShip.PositionY) - ship.RotationInDegrees;
+            rangeOutput.SignalValue = SpaceMath.DistanceBetweenTwoPoints(ship.PositionX, ship.PositionY, nearestShip.PositionX, nearestShip.PositionY);
         }
     }
 

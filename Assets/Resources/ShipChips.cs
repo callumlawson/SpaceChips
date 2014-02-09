@@ -16,12 +16,12 @@ internal class BasicChip : ShipChip
         var bearingWire = new AnalogueWire(simulation);
         var thrustMangnitudeWire = new AnalogueWire(simulation);
 
+        var scanner = new BasicScanner(simulation, ship, world, rangeWire, bearingWire);
+        var turret = new BasicTurret(simulation, ship, world, bearingWire);
         new AnalogueProbe(simulation, ship, world, "Bearing", bearingWire);
         new AnalogueConstant(simulation, ship, world, 0.01f, thrustMangnitudeWire);
         new OmniThruster(simulation, ship, world, bearingWire, thrustMangnitudeWire);
-        var scanner = new BasicScanner(simulation, ship, world, rangeWire, bearingWire);
-        var turret = new BasicTurret(simulation, ship, world, bearingWire);
-
+       
         new TurretVisualiserController(engineEvents, ship, turret, ComponentPaths.BasicTurretComponent);
         new ScannerVisualiserController(engineEvents, ship, scanner, ComponentPaths.BasicScannerComponent);
     }

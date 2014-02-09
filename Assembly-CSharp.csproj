@@ -84,6 +84,7 @@
      <Compile Include="Assets\Scripts\Util\SpaceMath.cs" />
      <Compile Include="Assets\Scripts\Visualisation\Controllers\ScannerVisualiserController.cs" />
      <Compile Include="Assets\Scripts\Visualisation\Controllers\TurretVisualiserController.cs" />
+     <Compile Include="Assets\Scripts\Visualisation\Controllers\VisualiserController.cs" />
      <Compile Include="Assets\Scripts\Visualisation\Visualisers\ScannerVisualiser.cs" />
      <Compile Include="Assets\Scripts\Visualisation\Visualisers\TurretVisualiser.cs" />
   </ItemGroup>
