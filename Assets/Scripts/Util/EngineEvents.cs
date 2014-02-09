@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-internal class EngineEvents : MonoBehaviour
+public class EngineEvents : MonoBehaviour
 {
     public event Action OnUpdate;
     public event Action OnStart;

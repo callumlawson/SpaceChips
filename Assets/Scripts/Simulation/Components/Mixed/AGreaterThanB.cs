@@ -5,7 +5,7 @@
     private readonly DigitalWire resultOutput;
 
     public AGreaterThanB(EngineEvents engineEvents, Simulation simulation, Ship ship, World world, AnalogueWire aInput, AnalogueWire bInput,
-        DigitalWire resultOutput) : base(engineEvents, simulation, ship, world)
+        DigitalWire resultOutput) : base(simulation)
     {
         this.resultOutput = resultOutput;
         this.bInput = bInput;

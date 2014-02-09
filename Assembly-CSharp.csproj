@@ -46,7 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Resources\ResourcePaths.cs" />
+     <Compile Include="Assets\Resources\ComponentPaths.cs" />
      <Compile Include="Assets\Resources\ShipChips.cs" />
      <Compile Include="Assets\Scripts\GameRunner.cs" />
      <Compile Include="Assets\Scripts\Simulation\Components\Analogue\ALU\AAddB.cs" />
@@ -74,7 +74,6 @@
      <Compile Include="Assets\Scripts\Simulation\Components\Digital\Util\DigitalProbe.cs" />
      <Compile Include="Assets\Scripts\Simulation\Components\Mixed\AGreaterThanB.cs" />
      <Compile Include="Assets\Scripts\Simulation\Components\Mixed\ASuppressB.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Components\VisualisedComponent.cs" />
      <Compile Include="Assets\Scripts\Simulation\Components\Wires\AnalogueWire.cs" />
      <Compile Include="Assets\Scripts\Simulation\Components\Wires\DigitalWire.cs" />
      <Compile Include="Assets\Scripts\Simulation\Components\Wires\Wire.cs" />
@@ -83,7 +82,8 @@
      <Compile Include="Assets\Scripts\Simulation\Simulation.cs" />
      <Compile Include="Assets\Scripts\Util\EngineEvents.cs" />
      <Compile Include="Assets\Scripts\Util\SpaceMath.cs" />
-     <Compile Include="Assets\Scripts\Visualisation\TurretVisualiser.cs" />
+     <Compile Include="Assets\Scripts\Visualisation\Controllers\TurretVisualiserController.cs" />
+     <Compile Include="Assets\Scripts\Visualisation\Visualisers\TurretVisualiser.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

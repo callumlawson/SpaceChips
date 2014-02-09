@@ -2,11 +2,13 @@
 {
     private readonly AnalogueWire bearingInput;
     private readonly AnalogueWire rangeInput;
+    private readonly Ship ship;
 
     protected ScannerComponent(EngineEvents engineEvents, Simulation simulation, Ship ship, World world,
         AnalogueWire rangeInput, AnalogueWire bearingInput)
-        : base(engineEvents, simulation, ship, world)
+        : base(simulation)
     {
+        this.ship = ship;
         this.rangeInput = rangeInput;
         this.bearingInput = bearingInput;
     }
@@ -16,8 +18,8 @@
         Ship nearestShip = ShipSelector();
         if (nearestShip != null)
         {
-            bearingInput.SignalValue = SpaceMath.PositionsToBearing(Ship.PositionX, Ship.PositionY, nearestShip.PositionX, nearestShip.PositionY) - Ship.RotationInDegrees;
-            rangeInput.SignalValue = SpaceMath.DistanceBetweenTwoPoints(Ship.PositionX, Ship.PositionY, nearestShip.PositionX, nearestShip.PositionY);
+            bearingInput.SignalValue = SpaceMath.PositionsToBearing(ship.PositionX, ship.PositionY, nearestShip.PositionX, nearestShip.PositionY) - ship.RotationInDegrees;
+            rangeInput.SignalValue = SpaceMath.DistanceBetweenTwoPoints(ship.PositionX, ship.PositionY, nearestShip.PositionX, nearestShip.PositionY);
         }
     }
 

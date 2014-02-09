@@ -1,4 +1,4 @@
-﻿abstract class Wire<T>
+﻿public abstract class Wire<T>
 {
     private T nextSignalValue;
     private T currentSignalValue;

@@ -3,7 +3,7 @@ using UnityEngine;
 
 //Dis be prototype and evil!
 
-internal class Simulation
+public class Simulation
 {
     private bool isRunning = false;
 

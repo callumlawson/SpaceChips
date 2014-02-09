@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-internal class World
+public class World
 {
     private readonly List<Ship> ships = new List<Ship>();
 

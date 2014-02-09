@@ -2,7 +2,7 @@
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-internal class Ship
+public class Ship
 {
     public float PositionX;
     public float PositionY;
@@ -65,7 +65,7 @@ internal class Ship
 
     private void CreateShipView()
     {
-        shipView = Object.Instantiate(Resources.Load<GameObject>(ResourcePaths.ShipResourcePath)) as GameObject;
+        shipView = Object.Instantiate(Resources.Load<GameObject>(ComponentPaths.ShipComponent)) as GameObject;
         if (shipView != null) InstanceId = shipView.GetInstanceID();
     }
 
@@ -73,6 +73,10 @@ internal class Ship
     {
         shipView.transform.position = new Vector3(PositionX, PositionY);
         shipView.transform.rotation = Quaternion.Euler(0.0f, 0.0f, RotationInDegrees);
+    }
+
+    private void AddVisualisedComponent() {
+        throw new NotImplementedException();
     }
 
     private void CheckForCollision()

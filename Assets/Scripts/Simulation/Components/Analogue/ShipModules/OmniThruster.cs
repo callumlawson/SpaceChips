@@ -4,21 +4,23 @@ internal class OmniThruster : Component
 {
     private readonly AnalogueWire bearingInput;
     private readonly AnalogueWire thrustMagnitudeInput;
+    private readonly Ship ship;
 
-    public OmniThruster(EngineEvents engineEvents, Simulation simulation, Ship ship, World world, AnalogueWire bearingInput,
-        AnalogueWire thrustMagnitudeInput) : base(engineEvents, simulation, ship, world)
+    public OmniThruster(Simulation simulation, Ship ship, World world, AnalogueWire bearingInput,
+        AnalogueWire thrustMagnitudeInput) : base(simulation)
     {
+        this.ship = ship;
         this.bearingInput = bearingInput;
         this.thrustMagnitudeInput = thrustMagnitudeInput;
     }
 
     public override void OnClockEdge()
     {
-        var thrustBearing = bearingInput.SignalValue + Ship.RotationInDegrees;
+        var thrustBearing = bearingInput.SignalValue + ship.RotationInDegrees;
         var thrustVector = SpaceMath.BearingToNormalizedVector2(thrustBearing)*thrustMagnitudeInput.SignalValue;
-        Ship.PositionX += thrustVector.x;
-        Ship.PositionY += thrustVector.y;
+        ship.PositionX += thrustVector.x;
+        ship.PositionY += thrustVector.y;
 
-        Ship.RotationInDegrees = Mathf.Lerp(Ship.RotationInDegrees, thrustBearing, 0.04f);
+        ship.RotationInDegrees = Mathf.Lerp(ship.RotationInDegrees, thrustBearing, 0.04f);
     }
 }

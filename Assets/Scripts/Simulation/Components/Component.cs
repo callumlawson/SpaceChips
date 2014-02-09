@@ -1,13 +1,8 @@
-﻿internal abstract class Component
+﻿public abstract class Component
 {
-    protected Ship Ship;
-    protected World World;
-
-    protected Component(EngineEvents engineEvents, Simulation simulation, Ship ship, World world)
+    //TODO rename as component is already a unity class
+    protected Component(Simulation simulation)
     {
-        Ship = ship;
-        World = world;
-        //Todo - unregister this!
         simulation.ClockEdge += OnClockEdge;
     }
 

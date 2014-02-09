@@ -4,7 +4,7 @@
     private readonly DigitalWire constantValueOuput;
 
     public DigitalConstant(EngineEvents engineEvents, Simulation simulation, Ship ship, World world, bool constantValue, DigitalWire constantValueOuput)
-        : base(engineEvents, simulation, ship, world)
+        : base(simulation)
     {
         this.constantValueOuput = constantValueOuput;
         this.constantValue = constantValue;

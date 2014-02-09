@@ -1,10 +1,10 @@
 ﻿internal class Not : Component
 {
-    private DigitalWire signalInput;
-    private DigitalWire negatedOutput;
+    private readonly DigitalWire signalInput;
+    private readonly DigitalWire negatedOutput;
 
     public Not(EngineEvents engineEvents, Simulation simulation, Ship ship, World world, DigitalWire signalInput, DigitalWire negatedOutput)
-        : base(engineEvents, simulation, ship, world)
+        : base(simulation)
     {
         this.negatedOutput = negatedOutput;
         this.signalInput = signalInput;

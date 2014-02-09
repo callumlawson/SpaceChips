@@ -1,24 +1,29 @@
-﻿using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
+using System;
+using System.Linq;
 
 //Todo - Purge code of evil
-internal class BasicTurret : VisualisedComponent
+public class BasicTurret : Component
 {
-    private readonly AnalogueWire bearingInput;
-    private TurretVisualiser turretVisualiser;
+    public event Action VisualiseLazerFiring;
+    public Vector2 TurretDirection;
 
+    private readonly AnalogueWire bearingInput;
     private const int LazerCooldownDuration = 40;
     private int currentLazerCooldown = LazerCooldownDuration;
+    private readonly Ship ship;
+    private readonly World world;
 
-    public BasicTurret(EngineEvents engineEvents, Simulation simulation, Ship ship, World world, AnalogueWire bearingInput) : base(engineEvents, simulation, ship, world)
+    public BasicTurret(Simulation simulation, Ship ship, World world, AnalogueWire bearingInput) : base(simulation)
     {
+        this.world = world;
+        this.ship = ship;
         this.bearingInput = bearingInput;
     }
 
     public override void OnClockEdge()
     {
         TryFireLazer();
-        UpdateModuleView();
     }
 
     private void TryFireLazer()
@@ -28,42 +33,22 @@ internal class BasicTurret : VisualisedComponent
             currentLazerCooldown -= 1;
             return;
         }
-
         currentLazerCooldown = LazerCooldownDuration;
 
-        var turretPosition = new Vector2(ModelView.transform.position.x, ModelView.transform.position.y);
-        var shotDirection = SpaceMath.BearingToNormalizedVector2(bearingInput.SignalValue + Ship.RotationInDegrees);
+        TurretDirection = SpaceMath.BearingToNormalizedVector2(bearingInput.SignalValue + ship.RotationInDegrees);
+        VisualiseLazerFiring();
 
-        turretVisualiser.FireLazer(turretPosition, turretPosition + shotDirection*30.0f);
+        //TODO - Physics via the world instead of breaking abstraction
+        var potentialHit = Physics2D.RaycastAll(new Vector2(ship.PositionX, ship.PositionY), TurretDirection)
+                                    .FirstOrDefault(hit => hit.transform.gameObject.GetInstanceID() != ship.InstanceId);
 
-        var potentialHit = Physics2D.RaycastAll(new Vector2(Ship.PositionX, Ship.PositionY), shotDirection)
-                                    .FirstOrDefault(hit => hit.transform.gameObject.GetInstanceID() != Ship.InstanceId);
-
-        // ReSharper disable ConditionIsAlwaysTrueOrFalse
-        if (potentialHit != null)
-        // ReSharper restore ConditionIsAlwaysTrueOrFalse
+        if (potentialHit.transform != null)
         {
-            if (potentialHit.transform != null)
+            var targetShip = world.GetShipByShipId(potentialHit.transform.gameObject.GetInstanceID());
+            if (targetShip != null)
             {
-                var targetShip = World.GetShipByShipId(potentialHit.transform.gameObject.GetInstanceID());
-                if (targetShip != null)
-                {
-                    targetShip.Destroy();
-                    
-                    turretVisualiser.FireLazer(new Vector2(turretPosition.x, turretPosition.y), new Vector2(potentialHit.point.x, potentialHit.point.y));
-                }
+                targetShip.Destroy();
             }
         }
-    }
-
-    private void UpdateModuleView()
-    {
-        turretVisualiser.RotationInDegrees = bearingInput.SignalValue + Ship.RotationInDegrees;
-    }
-
-    public override void CreateModuleView()
-    {
-        ModelView = Object.Instantiate(Resources.Load<GameObject>(ResourcePaths.BasicTurretResourcePath)) as GameObject;
-        if (ModelView != null) turretVisualiser = ModelView.GetComponent<TurretVisualiser>();
     }
 }

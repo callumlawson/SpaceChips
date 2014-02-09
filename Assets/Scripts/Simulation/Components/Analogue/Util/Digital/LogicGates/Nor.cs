@@ -4,8 +4,8 @@
     private readonly DigitalWire bInput;
     private readonly DigitalWire resultOutput;
 
-    public Nor(EngineEvents engineEvents, Simulation simulation, Ship ship, World world, DigitalWire aInput, DigitalWire bInput, DigitalWire resultOutput)
-        : base(engineEvents, simulation, ship, world)
+    public Nor(Simulation simulation, Ship ship, World world, DigitalWire aInput, DigitalWire bInput, DigitalWire resultOutput)
+        : base(simulation)
     {
         this.resultOutput = resultOutput;
         this.bInput = bInput;

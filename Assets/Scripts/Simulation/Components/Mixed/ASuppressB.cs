@@ -5,7 +5,7 @@ internal class ASuppressB : Component
 	private readonly AnalogueWire resultOutput;
 	
 	public ASuppressB(EngineEvents engineEvents, Simulation simulation, Ship ship, World world, DigitalWire aInput, AnalogueWire bInput, AnalogueWire resultOutput) 
-        : base(engineEvents, simulation, ship, world)
+        : base(simulation)
 	{
 		this.resultOutput = resultOutput;
 		this.bInput = bInput;
