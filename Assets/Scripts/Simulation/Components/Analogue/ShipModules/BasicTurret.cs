@@ -5,7 +5,7 @@ using System.Linq;
 //Todo - Purge code of evil
 public class BasicTurret : Component
 {
-    public event Action VisualiseLazerFiring;
+    public event Action LazerFired;
     public Vector2 TurretDirection;
 
     private readonly AnalogueWire bearingInput;
@@ -36,7 +36,7 @@ public class BasicTurret : Component
         currentLazerCooldown = LazerCooldownDuration;
 
         TurretDirection = SpaceMath.BearingToNormalizedVector2(bearingInput.SignalValue + ship.RotationInDegrees);
-        VisualiseLazerFiring();
+        LazerFired();
 
         //TODO - Physics via the world instead of breaking abstraction
         var potentialHit = Physics2D.RaycastAll(new Vector2(ship.PositionX, ship.PositionY), TurretDirection)

@@ -26,7 +26,7 @@ namespace Assets.Scripts.Visualisation.Controllers
         protected void InitaliseVisualiser()
         {
             turretVisualiser = ComponentGameObject.AddComponent<TurretVisualiser>();
-            turret.VisualiseLazerFiring += FireLazer;
+            turret.LazerFired += FireLazer;
         }
 
         protected override void OnUpdate()

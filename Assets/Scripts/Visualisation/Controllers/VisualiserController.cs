@@ -2,6 +2,7 @@
 
 namespace Assets.Scripts.Visualisation.Controllers
 {
+    //Instead of this we inject logical game objects into waiting visual
     public abstract class VisualiserController
     {
         protected GameObject ComponentGameObject;
