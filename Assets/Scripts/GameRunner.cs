@@ -34,6 +34,4 @@ internal class GameRunner : MonoBehaviour
     {
         new Ship(engineEvents, world, shipChip, 0, positionX, positionY);
     }
-
- 
 }

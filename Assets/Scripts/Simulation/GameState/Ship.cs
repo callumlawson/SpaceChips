@@ -18,10 +18,12 @@ public class Ship
     private readonly Simulation simulation;
     private readonly World world;
 
-    public Ship(EngineEvents engineEvents, World world, ShipChip shipChip, int team, float positionX, float positionY)
+    public Ship(Simulation simulation, EngineEvents engineEvents, World world, GameObject shipView, ShipChip shipChip, int team, float positionX, float positionY)
     {
         this.engineEvents = engineEvents;
         this.world = world;
+        this.shipView = shipView;
+        this.simulation = simulation;
         PositionX = positionX;
         PositionY = positionY;
         Team = team; 
@@ -31,7 +33,6 @@ public class Ship
         engineEvents.OnGameEnd += Destroy;
 
         world.AddShip(this);
-        simulation = new Simulation(engineEvents);
         shipChip.Setup(engineEvents, this, world, simulation);
         simulation.Start();
     }
@@ -54,19 +55,13 @@ public class Ship
 
     private void OnStart()
     {
-        CreateShipView();
+        if (shipView != null) InstanceId = shipView.GetInstanceID();
     }
 
     private void OnUpdate()
     {
         UpdateShipView();
         CheckForCollision();
-    }
-
-    private void CreateShipView()
-    {
-        shipView = Object.Instantiate(Resources.Load<GameObject>(ComponentPaths.ShipComponent)) as GameObject;
-        if (shipView != null) InstanceId = shipView.GetInstanceID();
     }
 
     private void UpdateShipView()
