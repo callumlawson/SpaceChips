@@ -13,12 +13,22 @@ namespace Assets.Scripts.ShipLoader
     {
         public static Ship Make(EngineEvents engineEvents, World world, ShipDefinition shipDefinition)
         {
+//            var barin = new brain()
+//            var ship = new Ship(brain)
+//            brain.addComp  may have ship
+
+            //Only ship has world
+            //Comps have ship - queries via ship
+            //Ship has interface for damage
+
             var simulation = new Simulation(engineEvents);
 //            var shipView 
             var digitalWires = new Dictionary<int, DigitalWire>();
             var analogueWires = new Dictionary<int, AnalogueWire>();
             var modules = new Dictionary<int, IModule>();
 //            List<Component> components;
+
+            //var Wires = new Dictionary<int, IWire>();
 
             foreach (AnalogueWireDefinition wireDef in shipDefinition.AnalogueWireDefinitions)
             {
@@ -75,6 +85,7 @@ namespace Assets.Scripts.ShipLoader
         {
              switch (hardpointType)
             {
+
                 case HardpointType.LazerTurret:
                     return ComponentPaths.BasicShip;
                 default:

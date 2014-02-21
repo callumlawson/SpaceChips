@@ -3,16 +3,14 @@ using UnityEngine;
 
 namespace Assets.Scripts.Visualisation.NewStyle
 {
-    class TurretModule : MonoBehaviour, ITurretModule
+    class TurretModule : TypedModule<BasicTurret>
     {
         private const float LazerLength = 200.0f;
         private LineRenderer lazer;
-        private Ship ship;
 
-        public void Initialize(Ship ship, BasicTurret basicTurret)
+        protected override void Initialize()
         {
-            this.ship = ship;
-            basicTurret.LazerFired += VisualiseLazerFiring;
+            componentModel.LazerFired += VisualiseLazerFiring;
         }
 
         void Start()

@@ -1,5 +1,8 @@
 ﻿
 namespace Assets.Scripts.Visualisation.NewStyle
 {
-    internal interface IModule {}
+    public interface IModule
+    {
+        void Initialize(Ship ship, Component basicTurret);
+    }
 }

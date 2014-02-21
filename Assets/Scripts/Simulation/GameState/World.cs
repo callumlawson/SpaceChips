@@ -15,6 +15,7 @@ public class World
         ships.Remove(ship);
     }
 
+    //These should be methods on a ship not on the world
     public Ship GetNearestShip(Ship shipDoingQuery)
     {
         return ships.Where(ship => ship.InstanceId != shipDoingQuery.InstanceId)

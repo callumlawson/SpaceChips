@@ -3,6 +3,8 @@ using UnityEngine;
 
 //Dis be prototype and evil!
 
+
+//ShipBrain - this contains the chips   Add chip  Kill the brain
 public class Simulation
 {
     private bool isRunning = false;

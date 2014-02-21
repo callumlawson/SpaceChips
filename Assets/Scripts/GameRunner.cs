@@ -8,6 +8,8 @@ internal class GameRunner : MonoBehaviour
   *Use JointJS for gui.
   **/ 
 
+    //If compeonents were given more uniform constuctors I could reflect on them to build editor proxy.
+
     private readonly World world = new World();
     private EngineEvents engineEvents;
 

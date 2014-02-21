@@ -18,12 +18,15 @@ public class Ship
     private readonly Simulation simulation;
     private readonly World world;
 
+    //Ship(Brain world view team position)
+    //Brain is just box for components no ref to world ship or anything
+    //Remove ship view from here and use same pattern as module
     public Ship(Simulation simulation, EngineEvents engineEvents, World world, GameObject shipView, ShipChip shipChip, int team, float positionX, float positionY)
     {
         this.engineEvents = engineEvents;
         this.world = world;
         this.shipView = shipView;
-        this.simulation = simulation;
+        
         PositionX = positionX;
         PositionY = positionY;
         Team = team; 
@@ -33,6 +36,7 @@ public class Ship
         engineEvents.OnGameEnd += Destroy;
 
         world.AddShip(this);
+        this.simulation = simulation;
         shipChip.Setup(engineEvents, this, world, simulation);
         simulation.Start();
     }
