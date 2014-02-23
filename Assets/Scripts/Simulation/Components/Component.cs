@@ -1,22 +1,23 @@
 ﻿using System;
 
-public abstract class Component
+namespace Assets.Scripts.Simulation.Components
 {
-    public event Action OnComponentDestroyed;
-    //TODO rename as component is already a unity class
-    protected Component(Simulation simulation, Ship ship)
+    public abstract class Component
     {
-        simulation.ClockEdge += OnClockEdge;
-        ship.OnShipDestroyed += Destroy;
-    }
-
-    protected void Destroy()
-    {
-        if (OnComponentDestroyed != null)
+        public event Action OnComponentDestroyed;
+        //TODO rename as component is already a unity class
+        protected Component()
         {
-            OnComponentDestroyed();
         }
-    }
 
-    public abstract void OnClockEdge();
+        public void Destroy()
+        {
+            if (OnComponentDestroyed != null)
+            {
+                OnComponentDestroyed();
+            }
+        }
+
+        public abstract void OnClockEdge();
+    }
 }

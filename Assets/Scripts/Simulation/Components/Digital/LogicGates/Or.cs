@@ -1,11 +1,14 @@
-﻿internal class Or : Component
+﻿using Assets.Scripts.Simulation.Components;
+using Assets.Scripts.Simulation.Components.Wires;
+using Assets.Scripts.Simulation.GameState;
+
+internal class Or : Component
 {
     private readonly DigitalWire aInput;
     private readonly DigitalWire bInput;
     private readonly DigitalWire resultOutput;
 
-    public Or(EngineEvents engineEvents, Simulation simulation, Ship ship, World world, DigitalWire aInput, DigitalWire bInput, DigitalWire resultOutput)
-        : base(simulation, ship)
+    public Or(Ship ship, DigitalWire aInput, DigitalWire bInput, DigitalWire resultOutput)
     {
         this.resultOutput = resultOutput;
         this.bInput = bInput;

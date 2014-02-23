@@ -1,5 +1,4 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Assets.Scripts.ShipLoader.ShipLoading
 {
@@ -12,8 +11,7 @@ namespace Assets.Scripts.ShipLoader.ShipLoading
     public class ComponentDefinition
     {
         public ComponentType ComponentType;
-        public List<int> InputWireIds;
-        public List<int> OutputWireIds;
-        public int? HardpointId;
+        public int? ComponentViewId;
+        public List<int> WireIds;
     }
 }

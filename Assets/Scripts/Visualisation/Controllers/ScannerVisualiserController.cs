@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Visualisation.Visualisers;
+﻿using Assets.Scripts.Simulation.GameState;
+using Assets.Scripts.Visualisation.Visualisers;
 using UnityEngine;
 
 namespace Assets.Scripts.Visualisation.Controllers

@@ -1,10 +1,14 @@
-﻿internal class BasicScanner : ScannerComponent
+﻿using Assets.Scripts.Simulation;
+using Assets.Scripts.Simulation.Components.Wires;
+using Assets.Scripts.Simulation.GameState;
+
+internal class BasicScanner : ScannerComponent
 {
     private readonly Ship ship;
     private readonly World world;
 
-    public BasicScanner(Simulation simulation, Ship ship, World world, AnalogueWire rangeOutput, AnalogueWire bearingOutput)
-        : base(simulation, ship, world, rangeOutput, bearingOutput)
+    public BasicScanner(Brain brain, Ship ship, World world, AnalogueWire rangeOutput, AnalogueWire bearingOutput)
+        : base(brain, ship, world, rangeOutput, bearingOutput)
     {
         this.world = world;
         this.ship = ship;

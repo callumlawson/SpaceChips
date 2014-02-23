@@ -1,19 +1,17 @@
-﻿public abstract class Wire<T>
+﻿namespace Assets.Scripts.Simulation.Components.Wires
 {
-    private T nextSignalValue;
-    private T currentSignalValue;
-    public T SignalValue {
-        get { return currentSignalValue; }
-        set { nextSignalValue = value; }
-    }
-
-    protected Wire(Simulation simulation)
+    public abstract class Wire<T> : IWire
     {
-        simulation.AfterClockEdge += AfterClockEdge;
-    }
+        private T nextSignalValue;
+        private T currentSignalValue;
+        public T SignalValue {
+            get { return currentSignalValue; }
+            set { nextSignalValue = value; }
+        }
 
-    public void AfterClockEdge()
-    {
-        currentSignalValue = nextSignalValue;
+        public void AfterClockEdge()
+        {
+            currentSignalValue = nextSignalValue;
+        }
     }
 }

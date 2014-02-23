@@ -1,11 +1,16 @@
-﻿internal class Nand : Component
+﻿using Assets.Scripts.Simulation;
+using Assets.Scripts.Simulation.Components;
+using Assets.Scripts.Simulation.Components.Wires;
+using Assets.Scripts.Simulation.GameState;
+
+internal class Nand : Component
 {
     private readonly DigitalWire aInput;
     private readonly DigitalWire bInput;
     private readonly DigitalWire resultOutput;
 
-    public Nand(Simulation simulation, Ship ship, World world, DigitalWire aInput, DigitalWire bInput, DigitalWire resultOutput)
-        : base(simulation, ship)
+    public Nand(Brain brain, Ship ship, World world, DigitalWire aInput, DigitalWire bInput, DigitalWire resultOutput)
+        : base()
     {
         this.resultOutput = resultOutput;
         this.bInput = bInput;

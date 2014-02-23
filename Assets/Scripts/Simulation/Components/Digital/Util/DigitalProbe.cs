@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Simulation;
+using Assets.Scripts.Simulation.Components.Wires;
+using Assets.Scripts.Simulation.GameState;
+using UnityEngine;
+using Component = Assets.Scripts.Simulation.Components.Component;
 
 internal class DigitalProbe : Component
 {
@@ -6,7 +10,7 @@ internal class DigitalProbe : Component
     private readonly string probeName;
     private readonly Ship ship;
 
-    public DigitalProbe(EngineEvents engineEvents, Simulation simulation, Ship ship, World world, string probeName,DigitalWire instrumentedDigitalWire) : base(simulation, ship)
+    public DigitalProbe(EngineEvents engineEvents, Brain brain, Ship ship, World world, string probeName,DigitalWire instrumentedDigitalWire) : base()
     {
         this.ship = ship;
         this.instrumentedDigitalWire = instrumentedDigitalWire;
@@ -15,6 +19,6 @@ internal class DigitalProbe : Component
 
     public override void OnClockEdge()
     {
-        Debug.Log(probeName + "Ship Id: " + ship.InstanceId + " probe value: " + instrumentedDigitalWire.SignalValue);
+        Debug.Log(probeName + "Ship Id: " + ship.ShipId + " probe value: " + instrumentedDigitalWire.SignalValue);
     }
 }

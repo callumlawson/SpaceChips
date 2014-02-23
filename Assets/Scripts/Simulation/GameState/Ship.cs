@@ -1,88 +1,90 @@
-﻿using System;
-using UnityEngine;
-using Object = UnityEngine.Object;
+﻿using System.Linq;
 
-public class Ship
+namespace Assets.Scripts.Simulation.GameState
 {
-    public float PositionX;
-    public float PositionY;
-    public float RotationInDegrees;
-    public int Team;
-    public int InstanceId;
-
-    public event Action OnShipDestroyed;
-
-    private const float CollisionDistance = 0.6f;
-    private readonly EngineEvents engineEvents;
-    private GameObject shipView;
-    private readonly Simulation simulation;
-    private readonly World world;
-
-    //Ship(Brain world view team position)
-    //Brain is just box for components no ref to world ship or anything
-    //Remove ship view from here and use same pattern as module
-    public Ship(Simulation simulation, EngineEvents engineEvents, World world, GameObject shipView, ShipChip shipChip, int team, float positionX, float positionY)
+    public class Ship
     {
-        this.engineEvents = engineEvents;
-        this.world = world;
-        this.shipView = shipView;
-        
-        PositionX = positionX;
-        PositionY = positionY;
-        Team = team; 
+        public float PositionX;
+        public float PositionY;
+        public float RotationInDegrees;
+        public int Team;
+        //Asigned by ships builder?
+        public int ShipId;
 
-        engineEvents.OnStart += OnStart;
-        engineEvents.OnUpdate += OnUpdate;
-        engineEvents.OnGameEnd += Destroy;
+        private readonly EngineEvents engineEvents;
+        private readonly Brain brain;
+        private readonly World world;
 
-        world.AddShip(this);
-        this.simulation = simulation;
-        shipChip.Setup(engineEvents, this, world, simulation);
-        simulation.Start();
-    }
+        private static int numShips;
+        private const float CollisionDistance = 0.6f;
 
-    public void Destroy()
-    {
-        if (OnShipDestroyed != null)
+        //Ship(Brain world view team position)
+        //Brain is just box for components no ref to world ship or anything
+
+        //Remove ship view from here and use same pattern as module
+        public Ship(EngineEvents engineEvents, Brain brain, World world, int shipId, int team, float positionX, float positionY)
         {
-            OnShipDestroyed.Invoke();
+            this.engineEvents = engineEvents;
+            this.brain = brain;
+            this.world = world;
+            ShipId = shipId;
+            Team = team; 
+            PositionX = positionX;
+            PositionY = positionY;
+
+            engineEvents.OnUpdate += OnUpdate;
+            engineEvents.OnGameEnd += Destroy;
+
+            world.AddShip(this);
         }
-        
-        simulation.Stop();
-        world.RemoveShip(this);
-        Object.Destroy(shipView);
 
-        engineEvents.OnStart -= OnStart;
-        engineEvents.OnUpdate -= OnUpdate;
-        engineEvents.OnGameEnd -= Destroy;
-    }
-
-    private void OnStart()
-    {
-        if (shipView != null) InstanceId = shipView.GetInstanceID();
-    }
-
-    private void OnUpdate()
-    {
-        UpdateShipView();
-        CheckForCollision();
-    }
-
-    private void UpdateShipView()
-    {
-        shipView.transform.position = new Vector3(PositionX, PositionY);
-        shipView.transform.rotation = Quaternion.Euler(0.0f, 0.0f, RotationInDegrees);
-    }
-
-    private void CheckForCollision()
-    {
-        var nearestShip = world.GetNearestShip(this);
-        if (nearestShip != null)
+        public void Destroy()
         {
-            if (SpaceMath.DistanceBetweenTwoPoints(PositionX, PositionY, nearestShip.PositionX, nearestShip.PositionY) <= CollisionDistance)
+            brain.Destroy();
+
+            world.RemoveShip(this);
+
+            engineEvents.OnUpdate -= OnUpdate;
+            engineEvents.OnGameEnd -= Destroy;
+        }
+
+        public Ship GetNearestShip()
+        {
+            return world.GetShips().Where(ship => ship.ShipId != ShipId)
+                .OrderBy(ship => SpaceMath.DistanceBetweenTwoPoints(PositionX, PositionY, ship.PositionX, ship.PositionY))
+                .FirstOrDefault();
+        }
+
+        public Ship GetNearestShipOnTeam()
+        {
+            return world.GetShips().Where(ship => ship.ShipId != ShipId)
+                .OrderBy(ship => SpaceMath.DistanceBetweenTwoPoints(PositionX, PositionY, ship.PositionX, ship.PositionY))
+                .FirstOrDefault(ship => ship.Team == Team);
+        }
+
+        public Ship GetNearestShipNotOnTeam()
+        {
+            return world.GetShips().Where(ship => ship.ShipId != ShipId)
+                .OrderBy(ship => SpaceMath.DistanceBetweenTwoPoints(PositionX, PositionY, ship.PositionX, ship.PositionY))
+                .FirstOrDefault(ship => ship.Team != Team);
+        }
+
+        private void OnUpdate()
+        {
+            brain.Tick();
+            CheckForCollision();
+        }
+
+        private void CheckForCollision()
+        {
+            var nearestShip = world.GetNearestShip(this);
+            if (nearestShip != null)
             {
-                nearestShip.Destroy();
-                Destroy();
+                if (SpaceMath.DistanceBetweenTwoPoints(PositionX, PositionY, nearestShip.PositionX, nearestShip.PositionY) <= CollisionDistance)
+                {
+                    nearestShip.Destroy();
+                    Destroy();
+                }
             }
         }
     }

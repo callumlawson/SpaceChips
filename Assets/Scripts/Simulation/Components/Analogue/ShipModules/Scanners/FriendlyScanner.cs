@@ -1,10 +1,14 @@
-﻿internal class FriendlyScanner : ScannerComponent
+﻿using Assets.Scripts.Simulation;
+using Assets.Scripts.Simulation.Components.Wires;
+using Assets.Scripts.Simulation.GameState;
+
+internal class FriendlyScanner : ScannerComponent
 {
     private readonly Ship ship;
     private readonly World world;
 
-    public FriendlyScanner(Simulation simulation, Ship ship, World world, AnalogueWire rangeOutput, AnalogueWire bearingOutput)
-        : base(simulation, ship, world, rangeOutput, bearingOutput)
+    public FriendlyScanner(Brain brain, Ship ship, World world, AnalogueWire rangeOutput, AnalogueWire bearingOutput)
+        : base(brain, ship, world, rangeOutput, bearingOutput)
     {
         this.world = world;
         this.ship = ship;

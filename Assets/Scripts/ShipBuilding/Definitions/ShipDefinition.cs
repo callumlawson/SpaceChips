@@ -3,17 +3,16 @@ using Assets.Scripts.ShipBuilding.Definitions;
 
 namespace Assets.Scripts.ShipLoader.ShipLoading
 {
-    public enum HullType
+    public enum ShipViewType
     {
         BasicShip
     }
 
     public class ShipDefinition
     {
-        public HullType HullType;
+        public ShipViewType ShipViewType;
         public List<HardpointDefinition> HardpointDefinitions;
         public List<ComponentDefinition> ComponentDefinitions;
-        public List<AnalogueWireDefinition> AnalogueWireDefinitions;
-        public List<DigitalWireDefinition> DigitalWireDefinitions;
+        public List<WireDefinition> WireDefinitions;
     }
 }

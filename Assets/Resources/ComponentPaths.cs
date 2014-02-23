@@ -1,5 +1,8 @@
 ﻿internal static class ComponentPaths
 {
+    public const string ShipsPath = "Prefabs/Ships/";
+    public const string HardpointPath = "Prefabs/VisualisedComponents/";
+
     public static string BasicShip = "Prefabs/Ships/Ship";
     public static string BasicTurretComponent = "Prefabs/VisualisedComponents/BasicTurret";
     public static string BasicScannerComponent = "Prefabs/VisualisedComponents/BasicScanner";

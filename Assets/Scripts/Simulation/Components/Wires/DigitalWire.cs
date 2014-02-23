@@ -1,5 +1,4 @@
-﻿internal class DigitalWire : Wire<bool>
+﻿namespace Assets.Scripts.Simulation.Components.Wires
 {
-    //Make extend marker interface IWire
-    public DigitalWire(Simulation simulation) : base(simulation) {}
+    internal class DigitalWire : Wire<bool> {}
 }

@@ -1,6 +1,9 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Simulation.Components.Wires;
+using Assets.Scripts.Simulation.GameState;
+using UnityEngine;
 using System;
 using System.Linq;
+using Component = Assets.Scripts.Simulation.Components.Component;
 
 //Todo - Purge code of evil
 public class BasicTurret : Component
@@ -14,7 +17,7 @@ public class BasicTurret : Component
     private readonly Ship ship;
     private readonly World world;
 
-    public BasicTurret(Simulation simulation, Ship ship, World world, AnalogueWire bearingInput) : base(simulation, ship)
+    public BasicTurret(Ship ship, World world, AnalogueWire bearingInput)
     {
         this.world = world;
         this.ship = ship;
@@ -40,7 +43,7 @@ public class BasicTurret : Component
 
         //TODO - Physics via the world instead of breaking abstraction
         var potentialHit = Physics2D.RaycastAll(new Vector2(ship.PositionX, ship.PositionY), TurretDirection)
-                                    .FirstOrDefault(hit => hit.transform.gameObject.GetInstanceID() != ship.InstanceId);
+                                    .FirstOrDefault(hit => hit.transform.gameObject.GetInstanceID() != ship.ShipId);
 
         if (potentialHit.transform != null)
         {

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Visualisation.NewStyle
 {
-    class TurretModule : TypedModule<BasicTurret>
+    class TurretComponentView : TypedComponentView<BasicTurret>
     {
         private const float LazerLength = 200.0f;
         private LineRenderer lazer;

@@ -1,11 +1,16 @@
-﻿abstract class ScannerComponent : Component
+﻿using Assets.Scripts.Simulation;
+using Assets.Scripts.Simulation.Components;
+using Assets.Scripts.Simulation.Components.Wires;
+using Assets.Scripts.Simulation.GameState;
+
+abstract class ScannerComponent : Component
 {
     private readonly AnalogueWire bearingOutput;
     private readonly AnalogueWire rangeOutput;
     private readonly Ship ship;
 
-    protected ScannerComponent(Simulation simulation, Ship ship, World world, AnalogueWire rangeOutput, AnalogueWire bearingOutput)
-        : base(simulation, ship)
+    protected ScannerComponent(Brain brain, Ship ship, World world, AnalogueWire rangeOutput, AnalogueWire bearingOutput)
+        : base()
     {
         this.ship = ship;
         this.rangeOutput = rangeOutput;

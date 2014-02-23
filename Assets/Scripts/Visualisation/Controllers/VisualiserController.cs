@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Component = Assets.Scripts.Simulation.Components.Component;
 
 namespace Assets.Scripts.Visualisation.Controllers
 {

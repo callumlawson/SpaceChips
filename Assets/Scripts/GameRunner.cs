@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Simulation.GameState;
+using UnityEngine;
 
 internal class GameRunner : MonoBehaviour
 {
@@ -34,6 +35,6 @@ internal class GameRunner : MonoBehaviour
 
     private void CreateShip(ShipChip shipChip, float positionX, float positionY)
     {
-        new Ship(engineEvents, world, shipChip, 0, positionX, positionY);
+        new Ship(engineEvents, world, shipChip, 0, 0, positionX, positionY);
     }
 }

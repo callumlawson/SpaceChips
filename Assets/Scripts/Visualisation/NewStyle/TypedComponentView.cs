@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Assets.Scripts.Simulation.GameState;
 using UnityEngine;
+using Component = Assets.Scripts.Simulation.Components.Component;
 
 namespace Assets.Scripts.Visualisation.NewStyle
 {
-    abstract class TypedModule <TComponentType> : MonoBehaviour, IModule
+    internal abstract class TypedComponentView<TComponentType> : MonoBehaviour, IComponentView
     {
         protected TComponentType componentModel;
         protected Ship ship;

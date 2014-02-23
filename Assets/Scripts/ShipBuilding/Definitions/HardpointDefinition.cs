@@ -8,7 +8,7 @@ namespace Assets.Scripts.ShipLoader.ShipLoading
         BasicScanner
     }
 
-    public enum ModuleType
+    public enum ComponentViewType
     {
         Turret    
     }
@@ -16,7 +16,7 @@ namespace Assets.Scripts.ShipLoader.ShipLoading
     public class HardpointDefinition
     {
         public HardpointType HardpointType;
-        public ModuleType ModuleType;
+        public ComponentViewType ComponentViewType;
         public int Id;
         public Vector2 Position;
     }

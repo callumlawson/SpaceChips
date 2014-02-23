@@ -1,4 +1,4 @@
-﻿public class AnalogueWire : Wire<float>
+﻿namespace Assets.Scripts.Simulation.Components.Wires
 {
-    public AnalogueWire(Simulation simulation) : base(simulation) {}
+    public class AnalogueWire : Wire<float> {}
 }
