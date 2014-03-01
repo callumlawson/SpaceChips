@@ -1,9 +1,8 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Scripts.Visualisation.NewStyle
 {
-    class TurretComponentView : TypedComponentView<BasicTurret>
+    internal class TurretComponentView : TypedComponentView<BasicTurret>
     {
         private const float LazerLength = 200.0f;
         private LineRenderer lazer;
@@ -13,7 +12,7 @@ namespace Assets.Scripts.Visualisation.NewStyle
             ComponentModel.LazerFired += VisualiseLazerFiring;
         }
 
-        void Start()
+        private void Start()
         {
             lazer = GetComponent<LineRenderer>();
             if (lazer == null)
@@ -34,7 +33,7 @@ namespace Assets.Scripts.Visualisation.NewStyle
 
         private void VisualiseLazerFiring()
         {
-            VisualiseLazerFiring(gameObject.transform.position, gameObject.transform.position + (gameObject.transform.rotation * Vector3.right * LazerLength));
+            VisualiseLazerFiring(gameObject.transform.position, gameObject.transform.position + (gameObject.transform.rotation*Vector3.right*LazerLength));
             Invoke("TurnOffTheLazor", 1.0f);
         }
 

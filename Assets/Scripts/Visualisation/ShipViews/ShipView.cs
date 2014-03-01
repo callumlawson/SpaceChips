@@ -1,10 +1,9 @@
-﻿using System;
-using Assets.Scripts.Simulation.GameState;
+﻿using Assets.Scripts.Simulation.GameState;
 using UnityEngine;
 
 namespace Assets.Scripts.Visualisation.NewStyle
 {
-    class ShipView : MonoBehaviour, IShipView
+    internal class ShipView : MonoBehaviour, IShipView
     {
         private Ship ship;
 
@@ -24,7 +23,7 @@ namespace Assets.Scripts.Visualisation.NewStyle
             Destroy(gameObject);
         }
 
-        void Update()
+        private void Update()
         {
             transform.position = new Vector3(ship.PositionX, ship.PositionY);
             transform.rotation = Quaternion.Euler(0.0f, 0.0f, ship.RotationInDegrees);

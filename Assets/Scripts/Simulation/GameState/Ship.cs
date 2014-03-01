@@ -21,10 +21,8 @@ namespace Assets.Scripts.Simulation.GameState
         private static int numShips;
         private const float CollisionDistance = 0.6f;
 
-
         //Ship(Brain world view team position)
         //Brain is just box for components no ref to world ship or anything
-
         //Remove ship view from here and use same pattern as module
         public Ship(EngineEvents engineEvents, Brain brain, World world, int shipId, int team, float positionX, float positionY)
         {

@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.Simulation;
-using Assets.Scripts.Simulation.Components;
+﻿using Assets.Scripts.Simulation.Components;
 using Assets.Scripts.Simulation.Components.Wires;
 using Assets.Scripts.Simulation.GameState;
 
@@ -9,7 +8,7 @@ internal class AGreaterThanB : Component
     private readonly AnalogueWire bInput;
     private readonly DigitalWire resultOutput;
 
-    public AGreaterThanB(Brain brain, Ship ship, World world, AnalogueWire aInput, AnalogueWire bInput,
+    public AGreaterThanB(Ship ship, AnalogueWire aInput, AnalogueWire bInput,
         DigitalWire resultOutput) : base()
     {
         this.resultOutput = resultOutput;

@@ -5,14 +5,12 @@ using UnityEngine;
 
 internal class GameRunner : MonoBehaviour
 {
-  /**
-  *Notes:
-  *Concentrate on "has a" not "is a" relationships
-  *Use JointJS for gui.
-  **/ 
-
+    /**
+    *Notes:
+    *Concentrate on "has a" not "is a" relationships
+    *Use JointJS for gui.
+    **/
     //If compeonents were given more uniform constuctors I could reflect on them to build editor proxy.
-
     private readonly World world = new World();
     private EngineEvents engineEvents;
 
@@ -31,15 +29,10 @@ internal class GameRunner : MonoBehaviour
     {
         CreateShip(ShipDefs.BasicShip(), 0, 5, 5);
         CreateShip(ShipDefs.PassiveShip(), 1, 0, 0);
-//        CreateShip(new CowardChip(), -1, -3);
-//        CreateShip(new BasicChip(), 0, 0);
-//        CreateShip(new OrbitChip(), 5, 7);
     }
 
     private void CreateShip(ShipDefinition shipDef, int team, float positionX, float positionY)
     {
         ShipBuilder.Make(engineEvents, world, shipDef, team, positionX, positionY);
-        //Need to use new ship definitions
-        //new Ship(engineEvents, world, shipChip, 0, 0, positionX, positionY);
     }
 }
