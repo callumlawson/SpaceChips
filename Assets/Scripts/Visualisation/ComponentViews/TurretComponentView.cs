@@ -34,7 +34,7 @@ namespace Assets.Scripts.Visualisation.NewStyle
 
         private void VisualiseLazerFiring()
         {
-            VisualiseLazerFiring(gameObject.transform.position, gameObject.transform.position + (gameObject.transform.rotation * Vector3.forward * LazerLength));
+            VisualiseLazerFiring(gameObject.transform.position, gameObject.transform.position + (gameObject.transform.rotation * Vector3.right * LazerLength));
             Invoke("TurnOffTheLazor", 1.0f);
         }
 

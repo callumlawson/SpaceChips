@@ -1,4 +1,7 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace Assets.Scripts.Simulation.GameState
 {
@@ -9,6 +12,7 @@ namespace Assets.Scripts.Simulation.GameState
         public float RotationInDegrees;
         public int Team;
         public int ShipId;
+        public event Action OnShipDestroyed; 
 
         private readonly EngineEvents engineEvents;
         private readonly Brain brain;
@@ -16,6 +20,7 @@ namespace Assets.Scripts.Simulation.GameState
 
         private static int numShips;
         private const float CollisionDistance = 0.6f;
+
 
         //Ship(Brain world view team position)
         //Brain is just box for components no ref to world ship or anything
@@ -32,19 +37,25 @@ namespace Assets.Scripts.Simulation.GameState
             PositionY = positionY;
 
             engineEvents.OnUpdate += OnUpdate;
-            engineEvents.OnGameEnd += Destroy;
 
             world.AddShip(this);
         }
 
         public void Destroy()
         {
+            Debug.Log("Ship destroyed");
+
+            engineEvents.OnUpdate -= OnUpdate;
+            engineEvents.OnGameEnd -= Destroy;
+
             brain.Destroy();
 
             world.RemoveShip(this);
 
-            engineEvents.OnUpdate -= OnUpdate;
-            engineEvents.OnGameEnd -= Destroy;
+            if (OnShipDestroyed != null)
+            {
+                OnShipDestroyed.Invoke();
+            }
         }
 
         public Ship GetNearestShip()
@@ -68,9 +79,19 @@ namespace Assets.Scripts.Simulation.GameState
                 .FirstOrDefault(ship => ship.Team != Team);
         }
 
-        public Ship GetShipByShipId(int shipId)
+        public Ship GetShipFromShipId(int shipId)
         {
             return world.GetShipByShipId(ShipId);
+        }
+
+        public int? GameObjectToShipId(GameObject gameObject)
+        {
+            return world.GameObjectToShipId(gameObject);
+        }
+
+        public Ship GameObjectToShip(GameObject gameObject)
+        {
+            return world.GameObjectToShip(gameObject);
         }
 
         private void OnUpdate()

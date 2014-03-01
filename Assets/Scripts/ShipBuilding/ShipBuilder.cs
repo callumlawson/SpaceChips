@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Assets.Scripts.ShipBuilding.Definitions;
 using Assets.Scripts.ShipLoader.ShipLoading;
 using Assets.Scripts.Simulation;
@@ -12,30 +13,36 @@ using Object = UnityEngine.Object;
 
 //TODO - Replace switch case with reflection.
 //TODO - Add lots of helpful exceptions for possible nulls. Will help avoid crazy people.
+//TODO - Remove evil
 namespace Assets.Scripts.ShipBuilding
 {
     internal static class ShipBuilder
     {
         private static int numShips;
+        private const float AnalogueConst = 0.1f;
 
         public static void Make(EngineEvents engineEvents, World world, ShipDefinition shipDefinition, int team, float positionX, float positionY)
         {
-            var wires = new Dictionary<int, IWire>();
-            var componentViews = new Dictionary<int, IComponentView>();
             var brain = new Brain();
             var ship = new Ship(engineEvents, brain, world, numShips, team, positionX, positionY);
 
-            BuildWires(shipDefinition.WireDefinitions, wires);
-            BuildComponentViews(shipDefinition.HardpointDefinitions, componentViews);
-            BuildComponents(ship, shipDefinition.ComponentDefinitions, wires, componentViews);
+            var wires = BuildWires(shipDefinition.WireDefinitions);
+            var componentViews = BuildComponentViews(shipDefinition.HardpointDefinitions);
+            var components = BuildComponents(ship, shipDefinition.ComponentDefinitions, wires, componentViews);
+            
             BuildShipView(ship, shipDefinition.ShipViewType);
+
+            brain.Wires = wires.Values.ToList();
+            brain.Components = components;
 
             numShips++;
         }
 
-        private static void BuildWires(IEnumerable<WireDefinition> wireDefinitions, Dictionary<int, IWire> wires)
+        private static Dictionary<int, IWire> BuildWires(IEnumerable<WireDefinition> wireDefinitions)
         {
-            foreach (WireDefinition wireDef in wireDefinitions)
+            var wires = new Dictionary<int, IWire>();
+
+            foreach (var wireDef in wireDefinitions)
             {
                 switch (wireDef.WireType)
                 {
@@ -47,17 +54,16 @@ namespace Assets.Scripts.ShipBuilding
                         break;
                 }
             }
+
+            return wires;
         }
 
-        private static void BuildComponentViews(IEnumerable<HardpointDefinition> hardpointDefinitions, Dictionary<int, IComponentView> componentViews)
+        private static Dictionary<int, IComponentView> BuildComponentViews(IEnumerable<HardpointDefinition> hardpointDefinitions)
         {
-            foreach (HardpointDefinition hardpointDef in hardpointDefinitions)
-            {
-                componentViews.Add(hardpointDef.Id, BuildHardpoint(hardpointDef.HardpointType, hardpointDef.ComponentViewType));
-            }
+            return hardpointDefinitions.ToDictionary(hardpointDef => hardpointDef.Id, hardpointDef => BuildComponentView(hardpointDef.HardpointType, hardpointDef.ComponentViewType));
         }
 
-        private static IComponentView BuildHardpoint(HardpointType hardpointType, ComponentViewType componentViewType)
+        private static IComponentView BuildComponentView(HardpointType hardpointType, ComponentViewType componentViewType)
         {
             var hardpoint = Object.Instantiate(Resources.Load<GameObject>(ComponentPaths.HardpointPath + hardpointType)) as GameObject;
 
@@ -67,41 +73,43 @@ namespace Assets.Scripts.ShipBuilding
                     return hardpoint.AddComponent<TurretComponentView>();
                 case ComponentViewType.Scanner:
                     return hardpoint.AddComponent<ScannerComponentView>();
-                default: 
+                default:
                     throw new ArgumentException("ComonentViewType: " + componentViewType + " is not valid");
             }
         }
 
-        private static void BuildComponents(Ship ship, List<ComponentDefinition> componentDefinitions , Dictionary<int, IWire> wires, Dictionary<int, IComponentView> componentViews)
+        private static List<Component> BuildComponents(Ship ship, IEnumerable<ComponentDefinition> componentDefinitions, IDictionary<int, IWire> wires, Dictionary<int, IComponentView> componentViews)
         {
+            var components = new List<Component>();
+
             foreach (var componentDefinition in componentDefinitions)
             {
-                BuildComponent(ship, componentDefinition.ComponentType, componentDefinition.WireIds, componentDefinition.ComponentViewId, wires, componentViews);
+                var component = BuildComponent(ship, componentDefinition.ComponentType, componentDefinition.WireIds, wires);
+                InjectIntoComponentView(ship, component, componentDefinition.ComponentViewId, componentViews);
+                components.Add(component);
             }
+
+            return components;
         }
 
-        private static void BuildComponent(Ship ship, ComponentType componentType, List<int> wireIds, int? componentViewId, Dictionary<int, IWire> wires, Dictionary<int, IComponentView> componentViews)
+        private static Component BuildComponent(Ship ship, ComponentType componentType, IList<int> wireIds, IDictionary<int, IWire> wires)
         {
             switch (componentType)
             {
                 case ComponentType.And:
-                    InjectIntoComponentView(ship, new And(ship, wires[wireIds[0]] as DigitalWire, wires[wireIds[1]] as DigitalWire, wires[wireIds[2]] as DigitalWire), componentViewId, componentViews);
-                    break;
+                    return new And(ship, wires[wireIds[0]] as DigitalWire, wires[wireIds[1]] as DigitalWire, wires[wireIds[2]] as DigitalWire);
                 case ComponentType.Or:
-                    InjectIntoComponentView(ship, new Or(ship, wires[wireIds[0]] as DigitalWire, wires[wireIds[1]] as DigitalWire, wires[wireIds[2]] as DigitalWire), componentViewId, componentViews);
-                    break;
+                    return new Or(ship, wires[wireIds[0]] as DigitalWire, wires[wireIds[1]] as DigitalWire, wires[wireIds[2]] as DigitalWire);
                 case ComponentType.AnalogueConstant:
-                    InjectIntoComponentView(ship, new AnalogueConstant(ship, 1.0f, wires[wireIds[0]] as AnalogueWire), componentViewId, componentViews);
-                    break;
-                case ComponentType.BasicScanner: 
-                    InjectIntoComponentView(ship, new BasicScanner(ship, wires[wireIds[0]] as AnalogueWire,  wires[wireIds[0]] as AnalogueWire), componentViewId, componentViews);
-                    break;
+                    return new AnalogueConstant(ship, AnalogueConst, wires[wireIds[0]] as AnalogueWire);
+                case ComponentType.BasicScanner:
+                    return new BasicScanner(ship, wires[wireIds[0]] as AnalogueWire, wires[wireIds[1]] as AnalogueWire);
                 case ComponentType.BasicTurret:
-                    InjectIntoComponentView(ship, new BasicTurret(ship, wires[wireIds[0]] as AnalogueWire), componentViewId, componentViews);
-                    break;
+                    return new BasicTurret(ship, wires[wireIds[0]] as AnalogueWire);
                 case ComponentType.OmniThruster:
-                    InjectIntoComponentView(ship, new OmniThruster(ship, wires[wireIds[0]] as AnalogueWire, wires[wireIds[1]] as AnalogueWire), componentViewId, componentViews);
-                    break;
+                    return new OmniThruster(ship, wires[wireIds[0]] as AnalogueWire, wires[wireIds[1]] as AnalogueWire);
+                default:
+                    throw new ArgumentException("Component type: " + componentType + " not recognised");
             }
         }
 

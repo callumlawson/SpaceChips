@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using Assets.Scripts.Simulation.Components;
 using Assets.Scripts.Simulation.Components.Wires;
+using Component = Assets.Scripts.Simulation.Components.Component;
 
 //Dis be prototype and evil!
 //ShipBrain - this contains the chips   Add chip  Kill the brain
@@ -8,17 +8,17 @@ namespace Assets.Scripts.Simulation
 {
     public class Brain
     {
-        private readonly List<Component> components = new List<Component>();
-        private readonly List<IWire> wires = new List<IWire>();
+        private List<Component> components = new List<Component>();
+        private List<IWire> wires = new List<IWire>();
 
-        public void AddComponent(Component component)
+        public List<Component> Components
         {
-            components.Add(component);
+            set { components = value; }
         }
 
-        public void AddWire(IWire wire)
+        public List<IWire> Wires
         {
-            wires.Add(wire);
+            set { wires = value; }
         }
 
         public void Destroy()

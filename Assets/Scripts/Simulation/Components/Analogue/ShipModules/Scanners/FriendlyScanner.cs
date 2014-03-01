@@ -5,7 +5,7 @@ internal class FriendlyScanner : ScannerComponent
 {
     private readonly Ship ship;
 
-    public FriendlyScanner(Ship ship, AnalogueWire rangeOutput, AnalogueWire bearingOutput)
+    public FriendlyScanner(Ship ship, AnalogueWire bearingOutput, AnalogueWire rangeOutput)
         : base(ship, rangeOutput, bearingOutput)
     {
         this.ship = ship;

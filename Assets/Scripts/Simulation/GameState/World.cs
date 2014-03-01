@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Visualisation.NewStyle;
+using UnityEngine;
 
 namespace Assets.Scripts.Simulation.GameState
 {
@@ -25,6 +27,18 @@ namespace Assets.Scripts.Simulation.GameState
         public Ship GetShipByShipId(int shipId)
         {
             return ships.FirstOrDefault(ship => ship.ShipId == shipId);
+        }
+
+        public int? GameObjectToShipId(GameObject gameObject)
+        {
+            var shipView = gameObject.GetComponent<ShipView>();
+            return shipView.GetShipId();
+        }
+
+        public Ship GameObjectToShip(GameObject gameObject)
+        {
+            var shipId = GameObjectToShipId(gameObject);
+            return shipId.HasValue ? GetShipByShipId(shipId.Value) : null;
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.Simulation;
-using Assets.Scripts.Simulation.Components;
+﻿using Assets.Scripts.Simulation.Components;
 using Assets.Scripts.Simulation.Components.Wires;
 using Assets.Scripts.Simulation.GameState;
 
@@ -8,8 +7,7 @@ internal class DigitalConstant : Component
     private readonly bool constantValue;
     private readonly DigitalWire constantValueOuput;
 
-    public DigitalConstant(EngineEvents engineEvents, Brain brain, Ship ship, World world, bool constantValue, DigitalWire constantValueOuput)
-        : base()
+    public DigitalConstant(Ship ship, bool constantValue, DigitalWire constantValueOuput)
     {
         this.constantValueOuput = constantValueOuput;
         this.constantValue = constantValue;

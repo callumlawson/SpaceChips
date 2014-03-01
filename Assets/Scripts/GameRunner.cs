@@ -1,5 +1,5 @@
 ﻿using Assets.Scripts.ShipBuilding;
-using Assets.Scripts.ShipLoader;
+using Assets.Scripts.ShipLoader.ShipLoading;
 using Assets.Scripts.Simulation.GameState;
 using UnityEngine;
 
@@ -29,15 +29,16 @@ internal class GameRunner : MonoBehaviour
 
     private void SetupWorld()
     {
-        CreateShip(new BasicChip(), 2, 3);
+        CreateShip(ShipDefs.BasicShip(), 0, 5, 5);
+        CreateShip(ShipDefs.PassiveShip(), 1, 0, 0);
 //        CreateShip(new CowardChip(), -1, -3);
 //        CreateShip(new BasicChip(), 0, 0);
 //        CreateShip(new OrbitChip(), 5, 7);
     }
 
-    private void CreateShip(ShipChip shipChip, float positionX, float positionY)
+    private void CreateShip(ShipDefinition shipDef, int team, float positionX, float positionY)
     {
-        ShipBuilder.Make(engineEvents, world, ShipDefs.BasicShip(), 0, 0, 0);
+        ShipBuilder.Make(engineEvents, world, shipDef, team, positionX, positionY);
         //Need to use new ship definitions
         //new Ship(engineEvents, world, shipChip, 0, 0, positionX, positionY);
     }

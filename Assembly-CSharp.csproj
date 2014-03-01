@@ -376,7 +376,6 @@
      <Compile Include="Assets\Resources\ShipChips.cs" />
      <Compile Include="Assets\Scripts\GameRunner.cs" />
      <Compile Include="Assets\Scripts\ShipBuilding\Definitions\ComponentDefinition.cs" />
-     <Compile Include="Assets\Scripts\ShipBuilding\Definitions\DigitalWireDefinition.cs" />
      <Compile Include="Assets\Scripts\ShipBuilding\Definitions\HardpointDefinition.cs" />
      <Compile Include="Assets\Scripts\ShipBuilding\Definitions\ShipDefinition.cs" />
      <Compile Include="Assets\Scripts\ShipBuilding\Definitions\WireDefinition.cs" />
@@ -419,14 +418,6 @@
      <Compile Include="Assets\Scripts\Visualisation\ComponentViews\ScannerComponentView.cs" />
      <Compile Include="Assets\Scripts\Visualisation\ComponentViews\TurretComponentView.cs" />
      <Compile Include="Assets\Scripts\Visualisation\ComponentViews\TypedComponentView.cs" />
-     <Compile Include="Assets\Scripts\Visualisation\NewStyle\IModule.cs" />
-     <Compile Include="Assets\Scripts\Visualisation\NewStyle\ITurretModule.cs" />
-     <Compile Include="Assets\Scripts\Visualisation\NewStyle\TurretModule.cs" />
-     <Compile Include="Assets\Scripts\Visualisation\OldStyle\Controllers\ScannerVisualiserController.cs" />
-     <Compile Include="Assets\Scripts\Visualisation\OldStyle\Controllers\TurretVisualiserController.cs" />
-     <Compile Include="Assets\Scripts\Visualisation\OldStyle\Controllers\VisualiserController.cs" />
-     <Compile Include="Assets\Scripts\Visualisation\OldStyle\Visualisers\ScannerVisualiser.cs" />
-     <Compile Include="Assets\Scripts\Visualisation\OldStyle\Visualisers\TurretVisualiser.cs" />
      <Compile Include="Assets\Scripts\Visualisation\ShipViews\IShipView.cs" />
      <Compile Include="Assets\Scripts\Visualisation\ShipViews\ShipView.cs" />
      <None Include="Assets\JsonDotNet\ReadMe.txt" />

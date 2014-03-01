@@ -11,6 +11,17 @@ namespace Assets.Scripts.Visualisation.NewStyle
         public void Initialize(Ship ship)
         {
             this.ship = ship;
+            ship.OnShipDestroyed += DestroyShip;
+        }
+
+        public int GetShipId()
+        {
+            return ship.ShipId;
+        }
+
+        private void DestroyShip()
+        {
+            Destroy(gameObject);
         }
 
         void Update()

@@ -8,7 +8,7 @@ abstract class ScannerComponent : Component
     private readonly AnalogueWire rangeOutput;
     private readonly Ship ship;
 
-    protected ScannerComponent(Ship ship, AnalogueWire rangeOutput, AnalogueWire bearingOutput)
+    protected ScannerComponent(Ship ship, AnalogueWire bearingOutput, AnalogueWire rangeOutput)
     {
         this.ship = ship;
         this.rangeOutput = rangeOutput;
@@ -17,11 +17,11 @@ abstract class ScannerComponent : Component
 
     public override void OnClockEdge()
     {
-        Ship nearestShip = ShipSelector();
-        if (nearestShip != null)
+        Ship selectedShip = ShipSelector();
+        if (selectedShip != null)
         {
-            bearingOutput.SignalValue = SpaceMath.PositionsToBearing(ship.PositionX, ship.PositionY, nearestShip.PositionX, nearestShip.PositionY) - ship.RotationInDegrees;
-            rangeOutput.SignalValue = SpaceMath.DistanceBetweenTwoPoints(ship.PositionX, ship.PositionY, nearestShip.PositionX, nearestShip.PositionY);
+            bearingOutput.SignalValue = SpaceMath.PositionsToBearing(ship.PositionX, ship.PositionY, selectedShip.PositionX, selectedShip.PositionY) - ship.RotationInDegrees;
+            rangeOutput.SignalValue = SpaceMath.DistanceBetweenTwoPoints(ship.PositionX, ship.PositionY, selectedShip.PositionX, selectedShip.PositionY);
         }
     }
 

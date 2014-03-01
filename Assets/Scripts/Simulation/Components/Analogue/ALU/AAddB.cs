@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.Simulation;
-using Assets.Scripts.Simulation.Components;
+﻿using Assets.Scripts.Simulation.Components;
 using Assets.Scripts.Simulation.Components.Wires;
 using Assets.Scripts.Simulation.GameState;
 
@@ -10,8 +9,7 @@ internal class AAddB : Component
     private readonly AnalogueWire bInput;
     private readonly AnalogueWire resultOutput;
 
-    public AAddB(Brain brain, Ship ship, World world, AnalogueWire aInput, AnalogueWire bInput, AnalogueWire resultOutput)
-        : base()
+    public AAddB(Ship ship, AnalogueWire aInput, AnalogueWire bInput, AnalogueWire resultOutput)
     {
         this.resultOutput = resultOutput;
         this.bInput = bInput;

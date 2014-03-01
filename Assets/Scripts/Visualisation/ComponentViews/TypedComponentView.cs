@@ -13,7 +13,13 @@ namespace Assets.Scripts.Visualisation.NewStyle
         {
             Ship = ship;
             ComponentModel = component as TComponentType;
+            component.OnComponentDestroyed += DestroyComponentView;
             Initialize();
+        }
+
+        private void DestroyComponentView()
+        {
+            Destroy(gameObject);
         }
 
         protected abstract void Initialize();

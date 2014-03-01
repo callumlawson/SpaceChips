@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.Simulation;
-using Assets.Scripts.Simulation.Components;
+﻿using Assets.Scripts.Simulation.Components;
 using Assets.Scripts.Simulation.Components.Wires;
 using Assets.Scripts.Simulation.GameState;
 
@@ -8,8 +7,7 @@ internal class DigitalBuffer : Component
     private readonly DigitalWire bufferInput;
     private readonly DigitalWire bufferOutput;
 
-    public DigitalBuffer(EngineEvents engineEvents, Brain brain, Ship ship, World world, DigitalWire bufferInput, DigitalWire bufferOutput)
-        : base()
+    public DigitalBuffer(Ship ship, DigitalWire bufferInput, DigitalWire bufferOutput)
     {
         this.bufferOutput = bufferOutput;
         this.bufferInput = bufferInput;

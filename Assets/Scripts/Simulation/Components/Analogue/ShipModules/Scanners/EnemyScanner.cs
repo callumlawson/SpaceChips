@@ -5,7 +5,7 @@ internal class EnemyScanner : ScannerComponent
 {
     private readonly Ship ship;
 
-    public EnemyScanner(Ship ship, AnalogueWire rangeOutput, AnalogueWire bearingOutput)
+    public EnemyScanner(Ship ship, AnalogueWire bearingOutput, AnalogueWire rangeOutput)
         : base(ship, rangeOutput, bearingOutput)
     {
         this.ship = ship;

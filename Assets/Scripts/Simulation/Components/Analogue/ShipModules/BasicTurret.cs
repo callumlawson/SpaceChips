@@ -41,11 +41,11 @@ public class BasicTurret : Component
 
         //TODO - Physics via the world instead of breaking abstraction
         var potentialHit = Physics2D.RaycastAll(new Vector2(ship.PositionX, ship.PositionY), TurretDirection)
-                                    .FirstOrDefault(hit => hit.transform.gameObject.GetInstanceID() != ship.ShipId);
-
+                           .FirstOrDefault(hit => ship.GameObjectToShipId(hit.transform.gameObject) != ship.ShipId);
+                                    
         if (potentialHit.transform != null)
         {
-            var targetShip = ship.GetShipByShipId(potentialHit.transform.gameObject.GetInstanceID());
+            var targetShip = ship.GameObjectToShip(potentialHit.transform.gameObject);
             if (targetShip != null)
             {
                 targetShip.Destroy();

@@ -5,7 +5,7 @@ internal class BasicScanner : ScannerComponent
 {
     private readonly Ship ship;
 
-    public BasicScanner(Ship ship, AnalogueWire rangeOutput, AnalogueWire bearingOutput)
+    public BasicScanner(Ship ship, AnalogueWire bearingOutput, AnalogueWire rangeOutput)
         : base(ship, rangeOutput, bearingOutput)
     {
         this.ship = ship;
