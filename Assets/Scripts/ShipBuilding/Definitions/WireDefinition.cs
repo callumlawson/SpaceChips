@@ -9,6 +9,12 @@ namespace Assets.Scripts.ShipBuilding.Definitions
 
     public class WireDefinition
     {
+        public WireDefinition(WireType wireType, int id)
+        {
+            WireType = wireType;
+            Id = id;
+        }
+
         public WireType WireType;
         public int Id;
     }

@@ -8,7 +8,6 @@ namespace Assets.Scripts.Simulation.GameState
         public float PositionY;
         public float RotationInDegrees;
         public int Team;
-        //Asigned by ships builder?
         public int ShipId;
 
         private readonly EngineEvents engineEvents;
@@ -69,6 +68,11 @@ namespace Assets.Scripts.Simulation.GameState
                 .FirstOrDefault(ship => ship.Team != Team);
         }
 
+        public Ship GetShipByShipId(int shipId)
+        {
+            return world.GetShipByShipId(ShipId);
+        }
+
         private void OnUpdate()
         {
             brain.Tick();
@@ -77,7 +81,7 @@ namespace Assets.Scripts.Simulation.GameState
 
         private void CheckForCollision()
         {
-            var nearestShip = world.GetNearestShip(this);
+            var nearestShip = GetNearestShip();
             if (nearestShip != null)
             {
                 if (SpaceMath.DistanceBetweenTwoPoints(PositionX, PositionY, nearestShip.PositionX, nearestShip.PositionY) <= CollisionDistance)

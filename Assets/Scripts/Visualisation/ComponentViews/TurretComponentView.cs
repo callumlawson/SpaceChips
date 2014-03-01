@@ -10,7 +10,7 @@ namespace Assets.Scripts.Visualisation.NewStyle
 
         protected override void Initialize()
         {
-            componentModel.LazerFired += VisualiseLazerFiring;
+            ComponentModel.LazerFired += VisualiseLazerFiring;
         }
 
         void Start()
@@ -22,12 +22,17 @@ namespace Assets.Scripts.Visualisation.NewStyle
             }
         }
 
-        public void Update()
+        private void Update()
         {
-            gameObject.transform.position = new Vector2(ship.PositionX, ship.PositionY);
+            SetPosition();
         }
-      
-        public void VisualiseLazerFiring()
+
+        private void SetPosition()
+        {
+            gameObject.transform.position = new Vector2(Ship.PositionX, Ship.PositionY);
+        }
+
+        private void VisualiseLazerFiring()
         {
             VisualiseLazerFiring(gameObject.transform.position, gameObject.transform.position + (gameObject.transform.rotation * Vector3.forward * LazerLength));
             Invoke("TurnOffTheLazor", 1.0f);

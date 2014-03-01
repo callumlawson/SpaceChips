@@ -1,50 +1,30 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Assets.Scripts.Simulation.GameState;
 
-public class World
+namespace Assets.Scripts.Simulation.GameState
 {
-    private readonly List<Ship> ships = new List<Ship>();
-
-    public void AddShip(Ship ship)
+    public class World
     {
-        ships.Add(ship);
-    }
+        private readonly List<Ship> ships = new List<Ship>();
 
-    public void RemoveShip(Ship ship)
-    {
-        ships.Remove(ship);
-    }
+        public void AddShip(Ship ship)
+        {
+            ships.Add(ship);
+        }
 
-    public List<Ship> GetShips()
-    {
-        return ships;
-    }
+        public void RemoveShip(Ship ship)
+        {
+            ships.Remove(ship);
+        }
 
-    //These should be methods on a ship not on the world
-    public Ship GetNearestShip(Ship shipDoingQuery)
-    {
-        return ships.Where(ship => ship.ShipId != shipDoingQuery.ShipId)
-            .OrderBy(ship => SpaceMath.DistanceBetweenTwoPoints(shipDoingQuery.PositionX, shipDoingQuery.PositionY, ship.PositionX, ship.PositionY))
-            .FirstOrDefault();
-    }
+        public List<Ship> GetShips()
+        {
+            return ships;
+        }
 
-    public Ship GetNearestShipOnTeam(Ship shipDoingQuery, int team)
-    {
-        return ships.Where(ship => ship.ShipId != shipDoingQuery.ShipId)
-            .OrderBy(ship => SpaceMath.DistanceBetweenTwoPoints(shipDoingQuery.PositionX, shipDoingQuery.PositionY, ship.PositionX, ship.PositionY))
-            .FirstOrDefault(ship => ship.Team == team);
-    }
-
-    public Ship GetNearestShipNotOnTeam(Ship shipDoingQuery, int team)
-    {
-        return ships.Where(ship => ship.ShipId != shipDoingQuery.ShipId)
-            .OrderBy(ship => SpaceMath.DistanceBetweenTwoPoints(shipDoingQuery.PositionX, shipDoingQuery.PositionY, ship.PositionX, ship.PositionY))
-            .FirstOrDefault(ship => ship.Team != team);
-    }
-
-    public Ship GetShipByShipId(int shipId)
-    {
-        return ships.FirstOrDefault(ship => ship.ShipId == shipId);
+        public Ship GetShipByShipId(int shipId)
+        {
+            return ships.FirstOrDefault(ship => ship.ShipId == shipId);
+        }
     }
 }

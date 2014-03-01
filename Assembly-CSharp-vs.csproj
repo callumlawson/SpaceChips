@@ -376,12 +376,12 @@
     <Compile Include="Assets\Resources\ComponentPaths.cs" />
     <Compile Include="Assets\Resources\ShipChips.cs" />
     <Compile Include="Assets\Scripts\GameRunner.cs" />
-    <Compile Include="Assets\Scripts\ShipBuilding\Definitions\AnalogueWireDefinition.cs" />
     <Compile Include="Assets\Scripts\ShipBuilding\Definitions\ComponentDefinition.cs" />
-    <Compile Include="Assets\Scripts\ShipBuilding\Definitions\WireDefinition.cs" />
     <Compile Include="Assets\Scripts\ShipBuilding\Definitions\HardpointDefinition.cs" />
     <Compile Include="Assets\Scripts\ShipBuilding\Definitions\ShipDefinition.cs" />
+    <Compile Include="Assets\Scripts\ShipBuilding\Definitions\WireDefinition.cs" />
     <Compile Include="Assets\Scripts\ShipBuilding\ShipBuilder.cs" />
+    <Compile Include="Assets\Scripts\Simulation\Brain.cs" />
     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\ALU\AAddB.cs" />
     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\ALU\ADividedByB.cs" />
     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\ALU\AMinusB.cs" />
@@ -395,6 +395,7 @@
     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\Util\AnalogueBuffer.cs" />
     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\Util\AnalogueConstant.cs" />
     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\Util\AnalogueProbe.cs" />
+    <Compile Include="Assets\Scripts\Simulation\Components\Component.cs" />
     <Compile Include="Assets\Scripts\Simulation\Components\Digital\LogicGates\And.cs" />
     <Compile Include="Assets\Scripts\Simulation\Components\Digital\LogicGates\Nand.cs" />
     <Compile Include="Assets\Scripts\Simulation\Components\Digital\LogicGates\Nor.cs" />
@@ -404,7 +405,6 @@
     <Compile Include="Assets\Scripts\Simulation\Components\Digital\Util\DigitalBuffer.cs" />
     <Compile Include="Assets\Scripts\Simulation\Components\Digital\Util\DigitalConstant.cs" />
     <Compile Include="Assets\Scripts\Simulation\Components\Digital\Util\DigitalProbe.cs" />
-    <Compile Include="Assets\Scripts\Simulation\Components\Component.cs" />
     <Compile Include="Assets\Scripts\Simulation\Components\Mixed\AGreaterThanB.cs" />
     <Compile Include="Assets\Scripts\Simulation\Components\Mixed\ASuppressB.cs" />
     <Compile Include="Assets\Scripts\Simulation\Components\Wires\AnalogueWire.cs" />
@@ -413,25 +413,24 @@
     <Compile Include="Assets\Scripts\Simulation\Components\Wires\Wire.cs" />
     <Compile Include="Assets\Scripts\Simulation\GameState\Ship.cs" />
     <Compile Include="Assets\Scripts\Simulation\GameState\World.cs" />
-    <Compile Include="Assets\Scripts\Simulation\Brain.cs" />
     <Compile Include="Assets\Scripts\Util\EngineEvents.cs" />
     <Compile Include="Assets\Scripts\Util\SpaceMath.cs" />
-    <Compile Include="Assets\Scripts\Visualisation\Controllers\ScannerVisualiserController.cs" />
-    <Compile Include="Assets\Scripts\Visualisation\Controllers\TurretVisualiserController.cs" />
-    <Compile Include="Assets\Scripts\Visualisation\Controllers\VisualiserController.cs" />
-    <Compile Include="Assets\Scripts\Visualisation\NewStyle\IComponentView.cs" />
-    <Compile Include="Assets\Scripts\Visualisation\NewStyle\IShipView.cs" />
-    <Compile Include="Assets\Scripts\Visualisation\NewStyle\ShipView.cs" />
-    <Compile Include="Assets\Scripts\Visualisation\NewStyle\TurretComponentView.cs" />
-    <Compile Include="Assets\Scripts\Visualisation\NewStyle\TypedComponentView.cs" />
-    <Compile Include="Assets\Scripts\Visualisation\Visualisers\ScannerVisualiser.cs" />
-    <Compile Include="Assets\Scripts\Visualisation\Visualisers\TurretVisualiser.cs" />
+    <Compile Include="Assets\Scripts\Visualisation\ComponentViews\IComponentView.cs" />
+    <Compile Include="Assets\Scripts\Visualisation\ComponentViews\ScannerComponentView.cs" />
+    <Compile Include="Assets\Scripts\Visualisation\ComponentViews\TurretComponentView.cs" />
+    <Compile Include="Assets\Scripts\Visualisation\ComponentViews\TypedComponentView.cs" />
+    <Compile Include="Assets\Scripts\Visualisation\OldStyle\Controllers\ScannerVisualiserController.cs" />
+    <Compile Include="Assets\Scripts\Visualisation\OldStyle\Controllers\TurretVisualiserController.cs" />
+    <Compile Include="Assets\Scripts\Visualisation\OldStyle\Controllers\VisualiserController.cs" />
+    <Compile Include="Assets\Scripts\Visualisation\OldStyle\Visualisers\ScannerVisualiser.cs" />
+    <Compile Include="Assets\Scripts\Visualisation\OldStyle\Visualisers\TurretVisualiser.cs" />
+    <Compile Include="Assets\Scripts\Visualisation\ShipViews\IShipView.cs" />
+    <Compile Include="Assets\Scripts\Visualisation\ShipViews\ShipView.cs" />
     <None Include="Assets\JsonDotNet\ReadMe.txt" />
     <Reference Include="SampleClassLibrary">
       <HintPath>Assets\JsonDotNet\Examples\Tests\TestModels\SampleClassLibrary.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
 	   Other similar extension points exist, see Microsoft.Common.targets.

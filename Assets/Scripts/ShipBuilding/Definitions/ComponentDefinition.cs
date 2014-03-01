@@ -4,12 +4,24 @@ namespace Assets.Scripts.ShipLoader.ShipLoading
 {
     public enum ComponentType
     {
-        AND,
-        OR
+        And,
+        Or,
+        AnalogueProbe,
+        AnalogueConstant,
+        OmniThruster,
+        BasicScanner,
+        BasicTurret
     }
 
     public class ComponentDefinition
     {
+        public ComponentDefinition(ComponentType componentType, int? componentViewId, List<int> wireIds)
+        {
+            ComponentType = componentType;
+            ComponentViewId = componentViewId;
+            WireIds = wireIds;
+        }
+
         public ComponentType ComponentType;
         public int? ComponentViewId;
         public List<int> WireIds;

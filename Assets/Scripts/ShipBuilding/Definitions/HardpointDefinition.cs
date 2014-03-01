@@ -5,12 +5,14 @@ namespace Assets.Scripts.ShipLoader.ShipLoading
     public enum HardpointType
     {
         LazerTurret,
+        //Could have KineticTurret etc
         BasicScanner
     }
 
     public enum ComponentViewType
     {
-        Turret    
+        Turret,
+        Scanner
     }
 
     public class HardpointDefinition
@@ -19,5 +21,13 @@ namespace Assets.Scripts.ShipLoader.ShipLoading
         public ComponentViewType ComponentViewType;
         public int Id;
         public Vector2 Position;
+
+        public HardpointDefinition(HardpointType hardpointType, ComponentViewType componentViewType, int id, Vector2 position)
+        {
+            HardpointType = hardpointType;
+            ComponentViewType = componentViewType;
+            Id = id;
+            Position = position;
+        }
     }
 }

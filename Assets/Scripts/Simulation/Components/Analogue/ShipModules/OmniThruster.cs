@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.Simulation;
-using Assets.Scripts.Simulation.Components.Wires;
+﻿using Assets.Scripts.Simulation.Components.Wires;
 using Assets.Scripts.Simulation.GameState;
 using UnityEngine;
 using Component = Assets.Scripts.Simulation.Components.Component;
@@ -10,8 +9,7 @@ internal class OmniThruster : Component
     private readonly AnalogueWire thrustMagnitudeInput;
     private readonly Ship ship;
 
-    public OmniThruster(Brain brain, Ship ship, World world, AnalogueWire bearingInput,
-        AnalogueWire thrustMagnitudeInput) : base()
+    public OmniThruster(Ship ship, AnalogueWire bearingInput, AnalogueWire thrustMagnitudeInput)
     {
         this.ship = ship;
         this.bearingInput = bearingInput;

@@ -15,11 +15,9 @@ public class BasicTurret : Component
     private const int LazerCooldownDuration = 40;
     private int currentLazerCooldown = LazerCooldownDuration;
     private readonly Ship ship;
-    private readonly World world;
 
-    public BasicTurret(Ship ship, World world, AnalogueWire bearingInput)
+    public BasicTurret(Ship ship, AnalogueWire bearingInput)
     {
-        this.world = world;
         this.ship = ship;
         this.bearingInput = bearingInput;
     }
@@ -47,7 +45,7 @@ public class BasicTurret : Component
 
         if (potentialHit.transform != null)
         {
-            var targetShip = world.GetShipByShipId(potentialHit.transform.gameObject.GetInstanceID());
+            var targetShip = ship.GetShipByShipId(potentialHit.transform.gameObject.GetInstanceID());
             if (targetShip != null)
             {
                 targetShip.Destroy();
