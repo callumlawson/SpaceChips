@@ -2,8 +2,6 @@
 using Assets.Scripts.Simulation.Components.Wires;
 using Component = Assets.Scripts.Simulation.Components.Component;
 
-//Dis be prototype and evil!
-//ShipBrain - this contains the chips   Add chip  Kill the brain
 namespace Assets.Scripts.Simulation
 {
     public class Brain
