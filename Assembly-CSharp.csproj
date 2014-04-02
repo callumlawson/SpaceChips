@@ -19,7 +19,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_GENERICS;ENABLE_SUBSTANCE;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;UNITY_4_3_2;UNITY_4_3;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_GENERICS;ENABLE_SUBSTANCE;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;UNITY_4_3_1;UNITY_4_3;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -374,23 +374,22 @@
      <Compile Include="Assets\JsonDotNet\Source\WinRT\Utilities\RT_ValidationUtils.cs" />
      <Compile Include="Assets\Resources\ComponentPaths.cs" />
      <Compile Include="Assets\Resources\ShipChips.cs" />
+     <Compile Include="Assets\Scripts\Definitions\ComponentDefinition.cs" />
+     <Compile Include="Assets\Scripts\Definitions\HardpointDefinition.cs" />
+     <Compile Include="Assets\Scripts\Definitions\ShipDefinition.cs" />
+     <Compile Include="Assets\Scripts\Definitions\WireDefinition.cs" />
      <Compile Include="Assets\Scripts\GameRunner.cs" />
-     <Compile Include="Assets\Scripts\ShipBuilding\Definitions\ComponentDefinition.cs" />
-     <Compile Include="Assets\Scripts\ShipBuilding\Definitions\HardpointDefinition.cs" />
-     <Compile Include="Assets\Scripts\ShipBuilding\Definitions\ShipDefinition.cs" />
-     <Compile Include="Assets\Scripts\ShipBuilding\Definitions\WireDefinition.cs" />
-     <Compile Include="Assets\Scripts\ShipBuilding\ShipBuilder.cs" />
      <Compile Include="Assets\Scripts\Simulation\Brain.cs" />
      <Compile Include="Assets\Scripts\Simulation\Components\Analogue\ALU\AAddB.cs" />
      <Compile Include="Assets\Scripts\Simulation\Components\Analogue\ALU\ADividedByB.cs" />
      <Compile Include="Assets\Scripts\Simulation\Components\Analogue\ALU\AMinusB.cs" />
      <Compile Include="Assets\Scripts\Simulation\Components\Analogue\ALU\ATimesB.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\ShipModules\BasicTurret.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\ShipModules\OmniThruster.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\ShipModules\Scanners\BasicScanner.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\ShipModules\Scanners\EnemyScanner.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\ShipModules\Scanners\FriendlyScanner.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\ShipModules\Scanners\ScannerComponent.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\Scanners\BasicScanner.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\Scanners\EnemyScanner.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\Scanners\FriendlyScanner.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\Scanners\ScannerComponent.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\Thrusters\OmniThruster.cs" />
+     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\Turrets\BasicTurret.cs" />
      <Compile Include="Assets\Scripts\Simulation\Components\Analogue\Util\AnalogueBuffer.cs" />
      <Compile Include="Assets\Scripts\Simulation\Components\Analogue\Util\AnalogueConstant.cs" />
      <Compile Include="Assets\Scripts\Simulation\Components\Analogue\Util\AnalogueProbe.cs" />
@@ -410,8 +409,9 @@
      <Compile Include="Assets\Scripts\Simulation\Components\Wires\DigitalWire.cs" />
      <Compile Include="Assets\Scripts\Simulation\Components\Wires\IWire.cs" />
      <Compile Include="Assets\Scripts\Simulation\Components\Wires\Wire.cs" />
-     <Compile Include="Assets\Scripts\Simulation\GameState\Ship.cs" />
-     <Compile Include="Assets\Scripts\Simulation\GameState\World.cs" />
+     <Compile Include="Assets\Scripts\Simulation\ShipBuilder.cs" />
+     <Compile Include="Assets\Scripts\Simulation\State\Ship.cs" />
+     <Compile Include="Assets\Scripts\Simulation\State\World.cs" />
      <Compile Include="Assets\Scripts\Util\EngineEvents.cs" />
      <Compile Include="Assets\Scripts\Util\SpaceMath.cs" />
      <Compile Include="Assets\Scripts\Visualisation\ComponentViews\IComponentView.cs" />
@@ -420,6 +420,7 @@
      <Compile Include="Assets\Scripts\Visualisation\ComponentViews\TypedComponentView.cs" />
      <Compile Include="Assets\Scripts\Visualisation\ShipViews\IShipView.cs" />
      <Compile Include="Assets\Scripts\Visualisation\ShipViews\ShipView.cs" />
+     <None Include="Assets\Scripts\Definitions\ComponentDefsTest\CompDefs.xml" />
      <None Include="Assets\JsonDotNet\ReadMe.txt" />
  <Reference Include="SampleClassLibrary">
  <HintPath>Assets\JsonDotNet\Examples\Tests\TestModels\SampleClassLibrary.dll</HintPath>

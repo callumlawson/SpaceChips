@@ -1,5 +1,5 @@
 ﻿using Assets.Scripts.Simulation.Components.Wires;
-using Assets.Scripts.Simulation.GameState;
+using Assets.Scripts.Simulation.State;
 using UnityEngine;
 using System;
 using System.Linq;
@@ -37,6 +37,7 @@ public class BasicTurret : Component
         currentLazerCooldown = LazerCooldownDuration;
 
         TurretDirection = SpaceMath.BearingToNormalizedVector2(bearingInput.SignalValue + ship.RotationInDegrees);
+
         LazerFired();
 
         //TODO - Physics via the world instead of breaking abstraction

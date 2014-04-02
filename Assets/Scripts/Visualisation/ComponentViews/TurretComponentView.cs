@@ -10,6 +10,7 @@ namespace Assets.Scripts.Visualisation.NewStyle
         protected override void Initialize()
         {
             ComponentModel.LazerFired += VisualiseLazerFiring;
+            
         }
 
         private void Start()
@@ -33,7 +34,7 @@ namespace Assets.Scripts.Visualisation.NewStyle
 
         private void VisualiseLazerFiring()
         {
-            VisualiseLazerFiring(gameObject.transform.position, gameObject.transform.position + (gameObject.transform.rotation*Vector3.right*LazerLength));
+            VisualiseLazerFiring(gameObject.transform.position, gameObject.transform.position + new Vector3(ComponentModel.TurretDirection.x, ComponentModel.TurretDirection.y, 0) * LazerLength);
             Invoke("TurnOffTheLazor", 1.0f);
         }
 

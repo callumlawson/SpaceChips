@@ -1,5 +1,5 @@
 ﻿
-namespace Assets.Scripts.ShipBuilding.Definitions
+namespace Assets.Scripts.Definitions
 {
     public enum WireType
     {

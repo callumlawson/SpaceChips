@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.ShipLoader.ShipLoading
+namespace Assets.Scripts.Definitions
 {
     public enum HardpointType
     {

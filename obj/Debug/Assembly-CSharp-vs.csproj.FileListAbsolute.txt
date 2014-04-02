@@ -21,3 +21,4 @@ C:\Users\Callum\Programming\SpaceCircuits\Temp\bin\Debug\Mono.Cecil.dll
 C:\Users\Callum\Programming\SpaceCircuits\Temp\bin\Debug\nunit.framework.dll
 C:\Users\Callum\Programming\SpaceCircuits\Temp\bin\Debug\Unity.DataContract.dll
 C:\Users\Callum\Programming\SpaceCircuits\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+C:\Users\callum.INTERNAL\Documents\SpaceCircuits\Temp\bin\Debug\SampleClassLibrary.dll

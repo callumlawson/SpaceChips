@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Simulation.GameState;
+﻿using Assets.Scripts.Simulation.State;
 using UnityEngine;
 
 namespace Assets.Scripts.Visualisation.NewStyle

@@ -1,11 +1,10 @@
 ﻿//TODO - Wrap Ship events etc into context when code layout settles.
 
 using System.Collections.Generic;
-using Assets.Scripts.ShipBuilding.Definitions;
-using Assets.Scripts.ShipLoader.ShipLoading;
+using Assets.Scripts.Definitions;
 using Assets.Scripts.Simulation;
 using Assets.Scripts.Simulation.Components.Wires;
-using Assets.Scripts.Simulation.GameState;
+using Assets.Scripts.Simulation.State;
 using UnityEngine;
 
 public interface ShipChip

@@ -3,7 +3,7 @@ using System.Linq;
 using Assets.Scripts.Visualisation.NewStyle;
 using UnityEngine;
 
-namespace Assets.Scripts.Simulation.GameState
+namespace Assets.Scripts.Simulation.State
 {
     public class World
     {

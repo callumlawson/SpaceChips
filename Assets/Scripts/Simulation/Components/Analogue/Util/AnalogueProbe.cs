@@ -1,6 +1,6 @@
 ﻿using Assets.Scripts.Simulation;
 using Assets.Scripts.Simulation.Components.Wires;
-using Assets.Scripts.Simulation.GameState;
+using Assets.Scripts.Simulation.State;
 using UnityEngine;
 using Component = Assets.Scripts.Simulation.Components.Component;
 

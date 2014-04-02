@@ -1,6 +1,6 @@
-﻿using Assets.Scripts.ShipBuilding;
-using Assets.Scripts.ShipLoader.ShipLoading;
-using Assets.Scripts.Simulation.GameState;
+﻿using Assets.Scripts.Definitions;
+using Assets.Scripts.ShipBuilding;
+using Assets.Scripts.Simulation.State;
 using UnityEngine;
 
 internal class GameRunner : MonoBehaviour
@@ -27,8 +27,9 @@ internal class GameRunner : MonoBehaviour
 
     private void SetupWorld()
     {
-        CreateShip(ShipDefs.BasicShip(), 0, 5, 5);
-        CreateShip(ShipDefs.PassiveShip(), 1, 0, 0);
+        CreateShip(ShipDefs.BasicShip(), 1, 3, 5);
+        CreateShip(ShipDefs.BasicShip(), 2, 11, -2);
+        CreateShip(ShipDefs.PassiveShip(), 3, 1, -4);
     }
 
     private void CreateShip(ShipDefinition shipDef, int team, float positionX, float positionY)

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Assets.Scripts.ShipLoader.ShipLoading
+namespace Assets.Scripts.Definitions
 {
     public enum ComponentType
     {

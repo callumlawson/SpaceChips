@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using Assets.Scripts.ShipBuilding.Definitions;
 
-namespace Assets.Scripts.ShipLoader.ShipLoading
+namespace Assets.Scripts.Definitions
 {
     public enum ShipViewType
     {

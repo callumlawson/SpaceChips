@@ -1,6 +1,6 @@
 ﻿using Assets.Scripts.Simulation.Components;
 using Assets.Scripts.Simulation.Components.Wires;
-using Assets.Scripts.Simulation.GameState;
+using Assets.Scripts.Simulation.State;
 
 internal class DigitalConstant : Component
 {

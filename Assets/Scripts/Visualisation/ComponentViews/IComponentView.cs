@@ -1,5 +1,5 @@
 ﻿using Assets.Scripts.Simulation.Components;
-using Assets.Scripts.Simulation.GameState;
+using Assets.Scripts.Simulation.State;
 
 namespace Assets.Scripts.Visualisation.NewStyle
 {

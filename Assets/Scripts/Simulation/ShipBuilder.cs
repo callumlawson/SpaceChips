@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Scripts.ShipBuilding.Definitions;
-using Assets.Scripts.ShipLoader.ShipLoading;
+using Assets.Scripts.Definitions;
 using Assets.Scripts.Simulation;
 using Assets.Scripts.Simulation.Components.Wires;
-using Assets.Scripts.Simulation.GameState;
+using Assets.Scripts.Simulation.State;
 using Assets.Scripts.Visualisation.NewStyle;
 using UnityEngine;
 using Component = Assets.Scripts.Simulation.Components.Component;
@@ -19,7 +18,7 @@ namespace Assets.Scripts.ShipBuilding
     internal static class ShipBuilder
     {
         private static int numShips;
-        private const float AnalogueConst = 0.1f;
+        private const float AnalogueConst = 0.05f;
 
         public static void Make(EngineEvents engineEvents, World world, ShipDefinition shipDefinition, int team, float positionX, float positionY)
         {

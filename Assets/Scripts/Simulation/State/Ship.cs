@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Linq;
 using UnityEngine;
-using Debug = UnityEngine.Debug;
 
-namespace Assets.Scripts.Simulation.GameState
+namespace Assets.Scripts.Simulation.State
 {
     public class Ship
     {
@@ -41,8 +40,6 @@ namespace Assets.Scripts.Simulation.GameState
 
         public void Destroy()
         {
-            Debug.Log("Ship destroyed");
-
             engineEvents.OnUpdate -= OnUpdate;
             engineEvents.OnGameEnd -= Destroy;
 
@@ -105,6 +102,7 @@ namespace Assets.Scripts.Simulation.GameState
             {
                 if (SpaceMath.DistanceBetweenTwoPoints(PositionX, PositionY, nearestShip.PositionX, nearestShip.PositionY) <= CollisionDistance)
                 {
+                    Debug.Log("Ship destroyed by collision");
                     nearestShip.Destroy();
                     Destroy();
                 }
