@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.Simulation;
-using Assets.Scripts.Simulation.Components;
+﻿using Assets.Scripts.Simulation.Components;
 using Assets.Scripts.Simulation.Components.Wires;
 using Assets.Scripts.Simulation.State;
 
@@ -8,8 +7,7 @@ internal class AnalogueBuffer : Component
     private readonly AnalogueWire bufferInput;
     private readonly AnalogueWire bufferOutput;
 
-    public AnalogueBuffer(Brain brain, Ship ship, World world, AnalogueWire bufferInput, AnalogueWire bufferOutput)
-        : base()
+    public AnalogueBuffer(Ship ship, AnalogueWire bufferInput, AnalogueWire bufferOutput)
     {
         this.bufferInput = bufferInput;
         this.bufferOutput = bufferOutput;

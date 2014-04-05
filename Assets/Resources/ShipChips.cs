@@ -35,6 +35,11 @@ internal static class ShipDefs
         return new ShipDefinition(shipViewType, hardpointDefs, componentDefs, wireDefs);
     }
 
+
+
+
+
+
     public static ShipDefinition PassiveShip()
     {
         const ShipViewType shipViewType = ShipViewType.BasicShip;

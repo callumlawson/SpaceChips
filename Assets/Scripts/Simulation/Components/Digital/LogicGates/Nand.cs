@@ -19,4 +19,13 @@ internal class Nand : Component
     {
         resultOutput.SignalValue = !(aInput.SignalValue && bInput.SignalValue);
     }
+
+    //ToJSON() {
+    //
+    //class: digital.AND
+    //
+    //
+    //}
+
+    //FromJSON
 }
