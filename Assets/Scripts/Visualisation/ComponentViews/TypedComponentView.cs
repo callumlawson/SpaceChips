@@ -1,6 +1,6 @@
-﻿using Assets.Scripts.Simulation.State;
+﻿using Assets.Scripts.Simulation.Components;
+using Assets.Scripts.Simulation.State;
 using UnityEngine;
-using Component = Assets.Scripts.Simulation.Components.Component;
 
 namespace Assets.Scripts.Visualisation.NewStyle
 {
@@ -9,7 +9,7 @@ namespace Assets.Scripts.Visualisation.NewStyle
         protected TComponentType ComponentModel;
         protected Ship Ship;
 
-        public void Initialize(Ship ship, Component component)
+        public void Initialize(Ship ship, Chip component)
         {
             Ship = ship;
             ComponentModel = component as TComponentType;

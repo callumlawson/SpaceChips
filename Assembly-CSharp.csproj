@@ -19,7 +19,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_GENERICS;ENABLE_SUBSTANCE;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;UNITY_4_3_1;UNITY_4_3;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_GENERICS;ENABLE_SUBSTANCE;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;UNITY_4_3_2;UNITY_4_3;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -46,6 +46,30 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\CoherentUI\Samples\Scenes\Sample01_HelloCoherentUI\SampleCubeRotator.cs" />
+     <Compile Include="Assets\CoherentUI\Samples\Scenes\Sample02_Facebook\FacebookSampleScript.cs" />
+     <Compile Include="Assets\CoherentUI\Samples\Scenes\Sample03_MenuAndHUD\Game\ObjectPicker.cs" />
+     <Compile Include="Assets\CoherentUI\Samples\Scenes\Sample03_MenuAndHUD\Main Menu\MenuScript.cs" />
+     <Compile Include="Assets\CoherentUI\Samples\Scenes\Sample04_Binding\AutomaticBinding.cs" />
+     <Compile Include="Assets\CoherentUI\Samples\Scenes\Sample04_Binding\GameOptions.cs" />
+     <Compile Include="Assets\CoherentUI\Samples\Scenes\Sample04_Binding\InputForward.cs" />
+     <Compile Include="Assets\CoherentUI\Samples\Scenes\Sample04_Binding\ManualBinding.cs" />
+     <Compile Include="Assets\CoherentUI\Samples\Scenes\Sample04_Binding\MyMath.cs" />
+     <Compile Include="Assets\CoherentUI\Samples\Scenes\Sample05_ArchiveResource\ArchiveInputForward.cs" />
+     <Compile Include="Assets\CoherentUI\Samples\Scenes\Sample05_ArchiveResource\CustomFileHandlerScript.cs" />
+     <Compile Include="Assets\CoherentUI\Samples\Scenes\Sample05_ArchiveResource\tar_cs\DataWriter.cs" />
+     <Compile Include="Assets\CoherentUI\Samples\Scenes\Sample05_ArchiveResource\tar_cs\IArchiveDataWriter.cs" />
+     <Compile Include="Assets\CoherentUI\Samples\Scenes\Sample05_ArchiveResource\tar_cs\ITarHeader.cs" />
+     <Compile Include="Assets\CoherentUI\Samples\Scenes\Sample05_ArchiveResource\tar_cs\LegacyTarWriter.cs" />
+     <Compile Include="Assets\CoherentUI\Samples\Scenes\Sample05_ArchiveResource\tar_cs\TarException.cs" />
+     <Compile Include="Assets\CoherentUI\Samples\Scenes\Sample05_ArchiveResource\tar_cs\TarHeader.cs" />
+     <Compile Include="Assets\CoherentUI\Samples\Scenes\Sample05_ArchiveResource\tar_cs\TarReader.cs" />
+     <Compile Include="Assets\CoherentUI\Samples\Scenes\Sample05_ArchiveResource\tar_cs\TarWriter.cs" />
+     <Compile Include="Assets\CoherentUI\Samples\Scenes\Sample05_ArchiveResource\tar_cs\UsTarHeader.cs" />
+     <Compile Include="Assets\CoherentUI\Samples\Scenes\Sample_LiveGameViews\Rotator.cs" />
+     <Compile Include="Assets\CoherentUI\Samples\Scenes\Sample_MobileInput\BoxScript.cs" />
+     <Compile Include="Assets\CoherentUI\Samples\Scenes\Sample_MobileSurface\MobileSurface.cs" />
+     <Compile Include="Assets\CoherentUI\Samples\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs" />
      <Compile Include="Assets\JsonDotNet\Examples\Serialization\1-BasicSerialization\JNSimpleObjectSample.cs" />
      <Compile Include="Assets\JsonDotNet\Examples\Serialization\2-Polymorphism\JNPolymorphismSample.cs" />
      <Compile Include="Assets\JsonDotNet\Examples\Serialization\3-BSON\JNBsonSample.cs" />
@@ -374,41 +398,42 @@
      <Compile Include="Assets\JsonDotNet\Source\WinRT\Utilities\RT_ValidationUtils.cs" />
      <Compile Include="Assets\Resources\ComponentPaths.cs" />
      <Compile Include="Assets\Resources\ShipChips.cs" />
+     <Compile Include="Assets\Scripts\ChipEditor\ChipEditor.cs" />
+     <Compile Include="Assets\Scripts\Components\Analogue\ALU\AAddB.cs" />
+     <Compile Include="Assets\Scripts\Components\Analogue\ALU\ADividedByB.cs" />
+     <Compile Include="Assets\Scripts\Components\Analogue\ALU\AMinusB.cs" />
+     <Compile Include="Assets\Scripts\Components\Analogue\ALU\ATimesB.cs" />
+     <Compile Include="Assets\Scripts\Components\Analogue\Scanners\BasicScanner.cs" />
+     <Compile Include="Assets\Scripts\Components\Analogue\Scanners\EnemyScanner.cs" />
+     <Compile Include="Assets\Scripts\Components\Analogue\Scanners\FriendlyScanner.cs" />
+     <Compile Include="Assets\Scripts\Components\Analogue\Scanners\ScannerComponent.cs" />
+     <Compile Include="Assets\Scripts\Components\Analogue\Thrusters\OmniThruster.cs" />
+     <Compile Include="Assets\Scripts\Components\Analogue\Turrets\BasicTurret.cs" />
+     <Compile Include="Assets\Scripts\Components\Analogue\Util\AnalogueBuffer.cs" />
+     <Compile Include="Assets\Scripts\Components\Analogue\Util\AnalogueConstant.cs" />
+     <Compile Include="Assets\Scripts\Components\Analogue\Util\AnalogueProbe.cs" />
+     <Compile Include="Assets\Scripts\Components\Chip.cs" />
+     <Compile Include="Assets\Scripts\Components\Digital\LogicGates\And.cs" />
+     <Compile Include="Assets\Scripts\Components\Digital\LogicGates\Nand.cs" />
+     <Compile Include="Assets\Scripts\Components\Digital\LogicGates\Nor.cs" />
+     <Compile Include="Assets\Scripts\Components\Digital\LogicGates\Not.cs" />
+     <Compile Include="Assets\Scripts\Components\Digital\LogicGates\Or.cs" />
+     <Compile Include="Assets\Scripts\Components\Digital\LogicGates\Xor.cs" />
+     <Compile Include="Assets\Scripts\Components\Digital\Util\DigitalBuffer.cs" />
+     <Compile Include="Assets\Scripts\Components\Digital\Util\DigitalConstant.cs" />
+     <Compile Include="Assets\Scripts\Components\Digital\Util\DigitalProbe.cs" />
+     <Compile Include="Assets\Scripts\Components\Mixed\AGreaterThanB.cs" />
+     <Compile Include="Assets\Scripts\Components\Mixed\ASuppressB.cs" />
+     <Compile Include="Assets\Scripts\Components\Wires\AnalogueWire.cs" />
+     <Compile Include="Assets\Scripts\Components\Wires\DigitalWire.cs" />
+     <Compile Include="Assets\Scripts\Components\Wires\IWire.cs" />
+     <Compile Include="Assets\Scripts\Components\Wires\Wire.cs" />
      <Compile Include="Assets\Scripts\Definitions\ComponentDefinition.cs" />
      <Compile Include="Assets\Scripts\Definitions\HardpointDefinition.cs" />
      <Compile Include="Assets\Scripts\Definitions\ShipDefinition.cs" />
      <Compile Include="Assets\Scripts\Definitions\WireDefinition.cs" />
      <Compile Include="Assets\Scripts\GameRunner.cs" />
      <Compile Include="Assets\Scripts\Simulation\Brain.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\ALU\AAddB.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\ALU\ADividedByB.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\ALU\AMinusB.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\ALU\ATimesB.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\Scanners\BasicScanner.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\Scanners\EnemyScanner.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\Scanners\FriendlyScanner.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\Scanners\ScannerComponent.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\Thrusters\OmniThruster.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\Turrets\BasicTurret.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\Util\AnalogueBuffer.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\Util\AnalogueConstant.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Components\Analogue\Util\AnalogueProbe.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Components\Component.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Components\Digital\LogicGates\And.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Components\Digital\LogicGates\Nand.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Components\Digital\LogicGates\Nor.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Components\Digital\LogicGates\Not.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Components\Digital\LogicGates\Or.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Components\Digital\LogicGates\Xor.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Components\Digital\Util\DigitalBuffer.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Components\Digital\Util\DigitalConstant.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Components\Digital\Util\DigitalProbe.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Components\Mixed\AGreaterThanB.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Components\Mixed\ASuppressB.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Components\Wires\AnalogueWire.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Components\Wires\DigitalWire.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Components\Wires\IWire.cs" />
-     <Compile Include="Assets\Scripts\Simulation\Components\Wires\Wire.cs" />
      <Compile Include="Assets\Scripts\Simulation\ShipBuilder.cs" />
      <Compile Include="Assets\Scripts\Simulation\State\Ship.cs" />
      <Compile Include="Assets\Scripts\Simulation\State\World.cs" />
@@ -420,11 +445,26 @@
      <Compile Include="Assets\Scripts\Visualisation\ComponentViews\TypedComponentView.cs" />
      <Compile Include="Assets\Scripts\Visualisation\ShipViews\IShipView.cs" />
      <Compile Include="Assets\Scripts\Visualisation\ShipViews\ShipView.cs" />
+     <None Include="Assets\CoherentUI\Copyright.txt" />
+     <None Include="Assets\test.txt" />
+     <None Include="Assets\Standard Assets\Shaders\CoherentUI\DiffuseIgnoreZ.shader" />
      <None Include="Assets\Scripts\Definitions\ComponentDefsTest\CompDefs.xml" />
      <None Include="Assets\JsonDotNet\ReadMe.txt" />
+     <None Include="Assets\Standard Assets\Shaders\CoherentUI\TransparentDiffuseIgnoreZ.shader" />
+     <None Include="Assets\CoherentUI\Samples\Scenes\Sample06_Oculus\Readme.txt" />
  <Reference Include="SampleClassLibrary">
  <HintPath>Assets\JsonDotNet\Examples\Tests\TestModels\SampleClassLibrary.dll</HintPath>
  </Reference>
+ <Reference Include="CoherentUINet">
+ <HintPath>Assets\Plugins\CoherentUINet.dll</HintPath>
+ </Reference>
+ <Reference Include="CoherentUIMobileNet">
+ <HintPath>Assets\Plugins\CoherentUIMobileNet.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{DF169004-6807-DA3C-2691-F249BB9F140E}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

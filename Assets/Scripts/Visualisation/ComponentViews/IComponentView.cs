@@ -5,6 +5,6 @@ namespace Assets.Scripts.Visualisation.NewStyle
 {
     public interface IComponentView
     {
-        void Initialize(Ship ship, Component basicTurret);
+        void Initialize(Ship ship, Chip basicTurret);
     }
 }

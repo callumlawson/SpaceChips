@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
+using Assets.Scripts.Simulation.Components;
 using Assets.Scripts.Simulation.Components.Wires;
-using Component = Assets.Scripts.Simulation.Components.Component;
 
 namespace Assets.Scripts.Simulation
 {
     public class Brain
     {
-        private List<Component> components = new List<Component>();
+        private List<Chip> components = new List<Chip>();
         private List<IWire> wires = new List<IWire>();
 
-        public List<Component> Components
+        public List<Chip> Components
         {
             set { components = value; }
         }

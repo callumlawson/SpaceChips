@@ -1,0 +1,74 @@
+[
+  {
+    "ChipType": "Assets.Scripts.Components.Analogue.ALU.AAddB"
+  },
+  {
+    "ChipType": "ADividedByB"
+  },
+  {
+    "ChipType": "AMinusB"
+  },
+  {
+    "ChipType": "ATimesB"
+  },
+  {
+    "ChipType": "BasicScanner"
+  },
+  {
+    "ChipType": "EnemyScanner"
+  },
+  {
+    "ChipType": "FriendlyScanner"
+  },
+  {
+    "ChipType": "ScannerComponent"
+  },
+  {
+    "ChipType": "OmniThruster"
+  },
+  {
+    "ChipType": "BasicTurret"
+  },
+  {
+    "ChipType": "AnalogueBuffer"
+  },
+  {
+    "ChipType": "AnalogueConstant"
+  },
+  {
+    "ChipType": "AnalogueProbe"
+  },
+  {
+    "ChipType": "Assets.Scripts.Simulation.Components.Digital.LogicGates.And"
+  },
+  {
+    "ChipType": "Nand"
+  },
+  {
+    "ChipType": "Nor"
+  },
+  {
+    "ChipType": "Not"
+  },
+  {
+    "ChipType": "Or"
+  },
+  {
+    "ChipType": "Xor"
+  },
+  {
+    "ChipType": "DigitalBuffer"
+  },
+  {
+    "ChipType": "DigitalConstant"
+  },
+  {
+    "ChipType": "DigitalProbe"
+  },
+  {
+    "ChipType": "AGreaterThanB"
+  },
+  {
+    "ChipType": "ASuppressB"
+  }
+]

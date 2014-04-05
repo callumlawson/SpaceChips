@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Definitions;
 using Assets.Scripts.Simulation;
+using Assets.Scripts.Simulation.Components;
+using Assets.Scripts.Simulation.Components.Digital.LogicGates;
 using Assets.Scripts.Simulation.Components.Wires;
 using Assets.Scripts.Simulation.State;
 using Assets.Scripts.Visualisation.NewStyle;
 using UnityEngine;
-using Component = Assets.Scripts.Simulation.Components.Component;
 using Object = UnityEngine.Object;
 
 //TODO - Replace switch case with reflection.
@@ -77,9 +78,9 @@ namespace Assets.Scripts.ShipBuilding
             }
         }
 
-        private static List<Component> BuildComponents(Ship ship, IEnumerable<ComponentDefinition> componentDefinitions, IDictionary<int, IWire> wires, Dictionary<int, IComponentView> componentViews)
+        private static List<Chip> BuildComponents(Ship ship, IEnumerable<ComponentDefinition> componentDefinitions, IDictionary<int, IWire> wires, Dictionary<int, IComponentView> componentViews)
         {
-            var components = new List<Component>();
+            var components = new List<Chip>();
 
             foreach (var componentDefinition in componentDefinitions)
             {
@@ -91,7 +92,7 @@ namespace Assets.Scripts.ShipBuilding
             return components;
         }
 
-        private static Component BuildComponent(Ship ship, ComponentType componentType, IList<int> wireIds, IDictionary<int, IWire> wires)
+        private static Chip BuildComponent(Ship ship, ComponentType componentType, IList<int> wireIds, IDictionary<int, IWire> wires)
         {
             switch (componentType)
             {
@@ -108,11 +109,11 @@ namespace Assets.Scripts.ShipBuilding
                 case ComponentType.OmniThruster:
                     return new OmniThruster(ship, wires[wireIds[0]] as AnalogueWire, wires[wireIds[1]] as AnalogueWire);
                 default:
-                    throw new ArgumentException("Component type: " + componentType + " not recognised");
+                    throw new ArgumentException("Chip type: " + componentType + " not recognised");
             }
         }
 
-        private static void InjectIntoComponentView(Ship ship, Component component, int? componentViewId, Dictionary<int, IComponentView> componentViews)
+        private static void InjectIntoComponentView(Ship ship, Chip component, int? componentViewId, Dictionary<int, IComponentView> componentViews)
         {
             if (componentViewId != null)
             {

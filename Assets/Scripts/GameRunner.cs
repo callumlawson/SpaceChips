@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Definitions;
+using Assets.Scripts.Editor;
 using Assets.Scripts.ShipBuilding;
 using Assets.Scripts.Simulation.State;
 using UnityEngine;
@@ -11,6 +12,7 @@ internal class GameRunner : MonoBehaviour
     *Use JointJS for gui.
     **/
     //If compeonents were given more uniform constuctors I could reflect on them to build editor proxy.
+    private readonly ChipEditor editor = new ChipEditor();
     private readonly World world = new World();
     private EngineEvents engineEvents;
 

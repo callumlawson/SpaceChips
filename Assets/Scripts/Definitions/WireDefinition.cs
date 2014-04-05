@@ -3,11 +3,11 @@ using Assets.Scripts.Definitions;
 
 namespace Assets.Scripts.Definitions
 {
-//    public enum WireType
-//    {
-//        Analogue,
-//        Digital
-//    }
+    public enum WireType
+    {
+        Analogue,
+        Digital
+    }
 
     public class WireDefinition
     {
@@ -17,7 +17,7 @@ namespace Assets.Scripts.Definitions
             Id = id;
         }
 
-//        public WireType WireType;
+        public WireType WireType;
         public int Id;
     }
 }
