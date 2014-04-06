@@ -1,0 +1,24 @@
+5980 11:19:48.338246 I | Initializing Coherent UI ver. 1.8.1.1
+5980 11:19:48.469254 I | PID: 5308 | 6184 11:19:48.390249 Staring Coherent UI Host ver. 1.8.1.1
+5980 11:19:48.469254 I | PID: 5308 | 6184 11:19:48.390249 Detected OS: Windows NT 6.1 SP1
+5980 11:19:48.469254 I | PID: 5308 | 6184 11:19:48.454253 [5308:6184:INFO:UIContentClient.cpp(73)] GPU info collected in host process: 
+5980 11:19:48.469254 I | PID: 5308 | 6184 11:19:48.454253 [5308:6184:INFO:UIContentClient.cpp(78)] Main GPU vendor 4318 device 4225
+5980 11:19:48.469254 I | PID: 5308 | 6184 11:19:48.454253 [5308:6184:INFO:UIContentClient.cpp(98)] GPU driver NVIDIA 9.18.13.3182 from 11-11-2013
+5980 11:19:48.469254 I | Coherent UI system initialized successfully
+5980 11:19:48.485255 W | View to https://www.coherent-labs.com:3000/
+5980 11:19:48.486255 I | Selected DirectX device info:
+5980 11:19:48.486255 I | Device name {\\.\DISPLAY1}, DeviceId {4225}
+5980 11:19:48.486255 I | Device description {NVIDIA GeForce GTX 570}
+5980 11:19:48.486255 I | VendorId {4318}, Driver ver. {2533352100662382}
+5980 11:19:48.518256 I | View created successfully with id 0
+5980 11:19:48.519257 I | PID: 5308 | 6184 11:19:48.510256 Navigating view 0 to https://www.coherent-labs.com:3000/
+5980 11:19:48.552258 I | PID: 5308 | 4684 11:19:48.543258 [7372:5844:INFO:renderer_main.cc(215)] Running without renderer sandbox
+5980 11:19:48.735269 I | PID: 5308 | 6184 11:19:48.722268 [5308:6184:INFO:(0)] GPU info collected in gpu-process process: 
+5980 11:19:48.735269 I | PID: 5308 | 6184 11:19:48.722268 [5308:6184:INFO:(0)] Main GPU vendor 4318 device 4225
+5980 11:19:48.735269 I | PID: 5308 | 6184 11:19:48.722268 [5308:6184:INFO:(0)] GPU driver NVIDIA 9.18.13.3182 from 
+5980 11:19:48.802273 I | PID: 5308 | 6184 11:19:48.794272 [5308:6184:INFO:(0)] Selected DirectX device in GPUproc info:
+5980 11:19:48.802273 I | PID: 5308 | 6184 11:19:48.794272 [5308:6184:INFO:(0)] Device name {\\.\DISPLAY1}, DeviceId {4225}
+5980 11:19:48.802273 I | PID: 5308 | 6184 11:19:48.794272 [5308:6184:INFO:(0)] VendorId {4318}, Driver ver. {2533352100662382}
+5980 11:20:18.975999 I | Removing view 0
+5980 11:20:18.975999 I | Uninitializing Coherent UI
+5980 11:20:18.984999 I | Coherent UI uninitialized successfully
